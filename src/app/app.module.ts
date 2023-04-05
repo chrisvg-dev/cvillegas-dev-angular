@@ -9,6 +9,8 @@ import { SugestionsComponent } from './components/sugestions/sugestions.componen
 import { HelloWorldComponent } from './pages/hello-world/hello-world.component';
 import { HomeComponent } from './pages/home/home.component';
 
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +22,8 @@ import { HomeComponent } from './pages/home/home.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule, 
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
