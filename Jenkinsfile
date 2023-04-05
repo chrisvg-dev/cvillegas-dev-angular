@@ -2,10 +2,21 @@ pipeline {
     agent any
 
     stages {
-        stage('Run') {
+        stage('Build') {
             steps {
                 sh 'npm install'
-                sh 'npm run start'
+                sh 'npm run build'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'rm -rf /var/www/angular/*'
+                sh 'cp -rp dist/* /var/www/angular'
+            }
+        }
+        stage('Restart Server') {
+            steps {
+                sh 'sudo service apache2 restart'
             }
         }
     }
