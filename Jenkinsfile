@@ -11,7 +11,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh 'rm -rf /var/www/angular/*'
-                sh 'cp -rp dist/* /var/www/angular'
+                sh 'cp -rp dist/angular/* /var/www/angular'
             }
         }
         stage('Restart Server') {
