@@ -5,10 +5,10 @@ import { HomeComponent } from './pages/home/home.component';
 
 const routes: Routes = [
   {
-    path: 'hello-world', component: HelloWorldComponent, pathMatch: 'full'
+    path: '/hello-world', component: HelloWorldComponent, pathMatch: 'full'
   },
   {
-    path: '', component: HomeComponent, pathMatch: 'full'
+    path: '/', component: HomeComponent, pathMatch: 'full'
   },
   {
     path: '**', redirectTo: ''
