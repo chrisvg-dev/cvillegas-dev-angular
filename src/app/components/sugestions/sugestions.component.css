@@ -8,7 +8,7 @@ body {
   padding-top: 56px;
 }
 
-.d-block {
+.d-block, h6 {
     text-align: left;
 }
 
