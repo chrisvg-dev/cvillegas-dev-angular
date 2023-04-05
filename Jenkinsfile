@@ -5,7 +5,7 @@ pipeline {
         stage('Run') {
             steps {
                 sh 'npm install -g @angular/cli@latest'
-                sh 'ng serve'
+                sh 'npm run start'
             }
         }
     }
