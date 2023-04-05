@@ -10,6 +10,7 @@ import { HelloWorldComponent } from './pages/hello-world/hello-world.component';
 import { HomeComponent } from './pages/home/home.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { GithubComponent } from './pages/github/github.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     MainMenuComponent,
     SugestionsComponent,
     HelloWorldComponent,
-    HomeComponent
+    HomeComponent,
+    GithubComponent
   ],
   imports: [
     BrowserModule,

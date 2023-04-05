@@ -16,23 +16,13 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getRequest();
-    this.getRepositoryList();
   }
 
   getRequest(): void {
     this.request.get('http://cvillegas-dev.com:9191/api/v1/server').subscribe(
       resp => {
-        console.log(resp);
+        //console.log(resp);
       }
     );
   }
-
-  getRepositoryList(): void {
-    this.github.listAll().subscribe(
-      data => {
-        console.log(data);
-      }
-    );
-  }
-
 }
