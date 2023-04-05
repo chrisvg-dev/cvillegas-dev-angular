@@ -8,7 +8,7 @@ const routes: Routes = [
     path: '/hello-world', component: HelloWorldComponent, pathMatch: 'full'
   },
   {
-    path: '/', component: HomeComponent, pathMatch: 'full'
+    path: '', component: HomeComponent, pathMatch: 'full'
   },
   {
     path: '**', redirectTo: ''
