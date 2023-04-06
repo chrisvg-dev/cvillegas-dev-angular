@@ -12,8 +12,12 @@ export class SugestionsComponent implements OnInit {
   constructor(private http: HttpClient){}
   
   ngOnInit(): void {
-    this.http.get('http://cvillegas-dev.com:9191/api/v1/projects').subscribe(
+    this.http.post('http://localhost:9191/info/server', {
+      email: "cristianvg9692@gmail.com",
+      password: "cvillegas"
+    }).subscribe(
       data => {
+        console.log(data);
         this.data = data;
       }
     );
