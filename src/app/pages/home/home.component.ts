@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
   }
 
   getRequest(): void {
-    this.request.get('http://cvillegas-dev.com:9191/api/v1/server').subscribe(
+    this.request.get('http://cvillegas-dev.com:9191/info/server').subscribe(
       resp => {
         //console.log(resp);
       }
