@@ -1,0 +1,23 @@
+<section>
+    <h1>Showing pokemons from PokeApi</h1>
+    <hr>
+    <div class="row">
+        <input type="text" placeholder="How many Pokemons do you want to see?" class="form-control">
+    </div>
+    <div class="col-md-5 poke-container">
+        <div class="card col-md-12" *ngFor="let pokemon of pokemons">
+            <div class="card-title">
+                <h4>{{ pokemon.name.toUpperCase() }}</h4>
+            </div>
+            <div class="card-body">
+                <p>
+                    Here is a description for each Pokemon shown
+                </p>
+                <button class="btn btn-secondary" (click)="showPokemonData( pokemon.url )">Click here for more details</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 poke-container poke-data">
+        Hello
+    </div>
+</section>

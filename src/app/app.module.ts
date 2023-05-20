@@ -11,6 +11,7 @@ import { HomeComponent } from './pages/home/home.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { GithubComponent } from './pages/github/github.component';
+import { PokeapiComponent } from './pages/pokeapi/pokeapi.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { GithubComponent } from './pages/github/github.component';
     SugestionsComponent,
     HelloWorldComponent,
     HomeComponent,
-    GithubComponent
+    GithubComponent,
+    PokeapiComponent
   ],
   imports: [
     BrowserModule,
