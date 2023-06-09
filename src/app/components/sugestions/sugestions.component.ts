@@ -12,7 +12,7 @@ export class SugestionsComponent implements OnInit {
   constructor(private http: HttpClient){}
   
   ngOnInit(): void {
-    this.http.get('http://cvillegas-dev.com:9191/data/projects').subscribe(
+    this.http.get('https://cvillegas-dev.com:9191/data/projects').subscribe(
       data => {
         console.log(data);
         this.data = data;
