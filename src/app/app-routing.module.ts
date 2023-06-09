@@ -21,7 +21,7 @@ const routes: Routes = [
     path: 'spring-simple-crud', component: SpringbootSimpleCrudComponent, pathMatch: 'full'
   },
   {
-    path: 'monthly-payments', component: MonthlyPaymentsComponent, pathMatch: 'full'
+    path: 'monthly-payments', component: MonthlyPaymentsComponent
   },
   {
     path: '', component: HomeComponent, pathMatch: 'full'
