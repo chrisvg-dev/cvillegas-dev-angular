@@ -12,6 +12,12 @@ import { HomeComponent } from './pages/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { GithubComponent } from './pages/github/github.component';
 import { PokeapiComponent } from './pages/pokeapi/pokeapi.component';
+import { SpringbootSimpleCrudComponent } from './pages/springboot-simple-crud/springboot-simple-crud.component';
+
+import {MatTableModule} from '@angular/material/table'
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { MonthlyPaymentsComponent } from './pages/monthly-payments/monthly-payments.component';
+
 
 @NgModule({
   declarations: [
@@ -22,12 +28,16 @@ import { PokeapiComponent } from './pages/pokeapi/pokeapi.component';
     HelloWorldComponent,
     HomeComponent,
     GithubComponent,
-    PokeapiComponent
+    PokeapiComponent,
+    SpringbootSimpleCrudComponent,
+    MonthlyPaymentsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule, 
-    HttpClientModule
+    HttpClientModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

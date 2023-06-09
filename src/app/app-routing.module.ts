@@ -4,6 +4,8 @@ import { HelloWorldComponent } from './pages/hello-world/hello-world.component';
 import { HomeComponent } from './pages/home/home.component';
 import { GithubComponent } from './pages/github/github.component';
 import { PokeapiComponent } from './pages/pokeapi/pokeapi.component';
+import { SpringbootSimpleCrudComponent } from './pages/springboot-simple-crud/springboot-simple-crud.component';
+import { MonthlyPaymentsComponent } from './pages/monthly-payments/monthly-payments.component';
 
 const routes: Routes = [
   {
@@ -14,6 +16,12 @@ const routes: Routes = [
   },
   {
     path: 'pokeapi', component: PokeapiComponent, pathMatch: 'full'
+  },
+  {
+    path: 'spring-simple-crud', component: SpringbootSimpleCrudComponent, pathMatch: 'full'
+  },
+  {
+    path: 'monthly-payments', component: MonthlyPaymentsComponent, pathMatch: 'full'
   },
   {
     path: '', component: HomeComponent, pathMatch: 'full'
