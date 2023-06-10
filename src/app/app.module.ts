@@ -14,8 +14,6 @@ import { GithubComponent } from './pages/github/github.component';
 import { PokeapiComponent } from './pages/pokeapi/pokeapi.component';
 import { SpringbootSimpleCrudComponent } from './pages/springboot-simple-crud/springboot-simple-crud.component';
 
-import {MatTableModule} from '@angular/material/table'
-import {MatPaginatorModule} from '@angular/material/paginator';
 import { MonthlyPaymentsComponent } from './pages/monthly-payments/monthly-payments.component';
 
 
@@ -35,9 +33,7 @@ import { MonthlyPaymentsComponent } from './pages/monthly-payments/monthly-payme
   imports: [
     BrowserModule,
     AppRoutingModule, 
-    HttpClientModule,
-    MatTableModule,
-    MatPaginatorModule
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
