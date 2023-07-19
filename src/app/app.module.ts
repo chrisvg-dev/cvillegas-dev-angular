@@ -17,6 +17,7 @@ import { SpringbootSimpleCrudComponent } from './pages/springboot-simple-crud/sp
 import {MatTableModule} from '@angular/material/table'
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { MonthlyPaymentsComponent } from './pages/monthly-payments/monthly-payments.component';
+import { MyCoursesComponent } from './pages/my-courses/my-courses.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { MonthlyPaymentsComponent } from './pages/monthly-payments/monthly-payme
     GithubComponent,
     PokeapiComponent,
     SpringbootSimpleCrudComponent,
-    MonthlyPaymentsComponent
+    MonthlyPaymentsComponent,
+    MyCoursesComponent
   ],
   imports: [
     BrowserModule,

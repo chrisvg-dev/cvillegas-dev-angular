@@ -1,0 +1,15 @@
+.canvas {
+
+    height: auto;
+    padding: 1em;;
+}
+
+.list-group-item {
+    cursor: pointer;
+}
+
+.certificate {
+    text-align: center;
+    margin: 0 auto;
+    background-color: gray;
+}

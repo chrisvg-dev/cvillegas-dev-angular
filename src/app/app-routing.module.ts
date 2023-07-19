@@ -6,6 +6,7 @@ import { GithubComponent } from './pages/github/github.component';
 import { PokeapiComponent } from './pages/pokeapi/pokeapi.component';
 import { SpringbootSimpleCrudComponent } from './pages/springboot-simple-crud/springboot-simple-crud.component';
 import { MonthlyPaymentsComponent } from './pages/monthly-payments/monthly-payments.component';
+import { MyCoursesComponent } from './pages/my-courses/my-courses.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,9 @@ const routes: Routes = [
   },
   {
     path: 'monthly-payments', component: MonthlyPaymentsComponent
+  },
+  {
+    path: 'my-courses', component: MyCoursesComponent
   },
   {
     path: '', component: HomeComponent, pathMatch: 'full'
