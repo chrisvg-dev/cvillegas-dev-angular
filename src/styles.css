@@ -2,8 +2,6 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~font-awesome/css/font-awesome.css";
 
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
-
 .generic_link {
   outline: none;
   text-decoration: none;

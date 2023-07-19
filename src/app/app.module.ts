@@ -14,10 +14,14 @@ import { GithubComponent } from './pages/github/github.component';
 import { PokeapiComponent } from './pages/pokeapi/pokeapi.component';
 import { SpringbootSimpleCrudComponent } from './pages/springboot-simple-crud/springboot-simple-crud.component';
 
+<<<<<<< HEAD
 import {MatTableModule} from '@angular/material/table'
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { MonthlyPaymentsComponent } from './pages/monthly-payments/monthly-payments.component';
 import { MyCoursesComponent } from './pages/my-courses/my-courses.component';
+=======
+import { MonthlyPaymentsComponent } from './pages/monthly-payments/monthly-payments.component';
+>>>>>>> b07a440264d0db60ff19719372e8b281116cd285
 
 
 @NgModule({
@@ -37,9 +41,7 @@ import { MyCoursesComponent } from './pages/my-courses/my-courses.component';
   imports: [
     BrowserModule,
     AppRoutingModule, 
-    HttpClientModule,
-    MatTableModule,
-    MatPaginatorModule
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
