@@ -22,6 +22,8 @@ export class MyCoursesComponent implements OnInit {
   }
 
   changeCertificate(data: string): void {
-    this.default = data;
+    if (data) {
+      this.default = data;
+    }
   }
 }

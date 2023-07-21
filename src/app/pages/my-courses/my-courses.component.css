@@ -1,7 +1,7 @@
 .canvas {
-
-    height: auto;
-    padding: 1em;;
+    width: auto;
+    height: 600x;
+    background-color: bisque;
 }
 
 .list-group-item {

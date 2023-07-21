@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Project } from '../models/project.model';
 import { environment } from 'src/environments/environment';
 
-const URL = environment.LOCAL;
+const URL = environment.SERVER;
 
 @Injectable({
   providedIn: 'root'
