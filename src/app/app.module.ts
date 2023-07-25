@@ -29,7 +29,6 @@ import { CertificateComponent } from './components/dialogs/certificate/certifica
 import { MatPaginatorModule } from '@angular/material/paginator';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,

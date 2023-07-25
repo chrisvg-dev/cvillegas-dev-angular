@@ -30,14 +30,11 @@ export class MyCoursesComponent implements OnInit {
 
   dataSource:any;
 
-  certificate = environment.DEFAULT;
+  certificate!: number;
   
   constructor(private springBootService: SpringbootService, public dialog: MatDialog) {}
 
-  openCompDialog(certificate: string) {
-    if (certificate == null) {
-      certificate = this.certificate;
-    }
+  openCompDialog(certificate: number) {
     const myCompDialog = this.dialog.open(CertificateComponent, { data: certificate, width: '900px', height: 'auto' });
     myCompDialog.afterClosed().subscribe((res) => {
       // Data back from dialog
@@ -45,8 +42,12 @@ export class MyCoursesComponent implements OnInit {
     });
   }
   
-  ngOnInit(): void {
-    this.springBootService.findMyCourses().subscribe({
+  async ngOnInit() {
+    await this.loadCertificatesByCriteria('');
+  }
+
+  async loadCertificatesByCriteria(criteria: string): Promise<any> {
+    this.springBootService.findMyCourses(criteria).subscribe({
       next: (data) => {
         this.data = data;
         this.datos = data;
@@ -54,8 +55,6 @@ export class MyCoursesComponent implements OnInit {
         this.dataSource = new MatTableDataSource<Course>(this.datos);
         this.dataSource.paginator = this.paginator;
       },
-      error: error => { throw new Error(error) },
-      complete: () => console.log('Process done')      
-    });
+      error: error => { throw new Error(error) }    });
   }
 }
