@@ -30,5 +30,10 @@ table {
 
 .courses-container {
     width: 100%;
-    overflow-x: auto;
+}
+
+@media screen and (max-width: 600px) {
+    .courses-container {
+        overflow-x: auto;
+    }
 }
