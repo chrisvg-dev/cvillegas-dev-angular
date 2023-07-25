@@ -27,3 +27,8 @@ table {
     box-shadow: -1px 3px 66px 0px rgba(0,0,0,0.75);
     padding: 1rem;
 }   
+
+.courses-container {
+    width: 100%;
+    overflow-x: auto;
+}
