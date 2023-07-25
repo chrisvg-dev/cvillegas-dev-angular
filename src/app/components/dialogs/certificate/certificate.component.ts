@@ -12,11 +12,11 @@ export class CertificateComponent {
 
   constructor(
     public dialogRef: MatDialogRef<CertificateComponent>,
-    @Optional() @Inject(MAT_DIALOG_DATA) public mydata: any
+    @Optional() @Inject(MAT_DIALOG_DATA) public certificate: string
   ) { }
 
   ngOnInit(): void {
-    this.fromDialog = "I am from dialog land...";
+    this.fromDialog = "I am from dialog land..." + this.certificate;
   }
 
   closeDialog() { this.dialogRef.close({ event: 'close', data: this.fromDialog }); }

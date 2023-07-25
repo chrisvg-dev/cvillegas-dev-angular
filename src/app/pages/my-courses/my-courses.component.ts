@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, Inject, TemplateRef } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
-import { MatTable } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { CertificateComponent } from 'src/app/components/dialogs/certificate/certificate.component';
 import { Articulo } from 'src/app/models/articulo';
 import { Course } from 'src/app/models/course';
@@ -14,6 +15,7 @@ import { environment } from 'src/environments/environment';
 })
 export class MyCoursesComponent implements OnInit {
   data: any[] = [];
+  pageSize = [10];
   default: string = environment.DEFAULT;
 
   columnas: string[] = ['Id', 'Name', 'Description', 'Language', 'Type', 'Platform', 'Options'];
@@ -21,55 +23,39 @@ export class MyCoursesComponent implements OnInit {
 
   articuloselect: Course = new Course(0, '','','','','','','','');
 
-  @ViewChild(MatTable) tabla1!: MatTable<Articulo>;
-
-
+  @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
 
   @ViewChild('dialogRef')
   dialogRef!: TemplateRef<any>;
 
-  myFooList = ['Some Item', 'Item Second', 'Other In Row', 'What to write', 'Blah To Do']
+  dataSource:any;
+
+  certificate = environment.DEFAULT;
   
+  constructor(private springBootService: SpringbootService, public dialog: MatDialog) {}
 
-  constructor(
-    private springBootService: SpringbootService, 
-    public dialog: MatDialog) {}
-
-    openCompDialog() {
-      const myCompDialog = this.dialog.open(CertificateComponent, { data: this.myFooList, width: '500px', height: '300px' });
-      myCompDialog.afterClosed().subscribe((res) => {
-        // Data back from dialog
-        console.log({ res });
-      });
+  openCompDialog(certificate: string) {
+    if (certificate == null) {
+      certificate = this.certificate;
     }
+    const myCompDialog = this.dialog.open(CertificateComponent, { data: certificate, width: '900px', height: 'auto' });
+    myCompDialog.afterClosed().subscribe((res) => {
+      // Data back from dialog
+      console.log({ res });
+    });
+  }
   
   ngOnInit(): void {
     this.springBootService.findMyCourses().subscribe({
       next: (data) => {
         this.data = data;
         this.datos = data;
+
+        this.dataSource = new MatTableDataSource<Course>(this.datos);
+        this.dataSource.paginator = this.paginator;
       },
       error: error => { throw new Error(error) },
       complete: () => console.log('Process done')      
     });
-  }
-
-  changeCertificate(data: string): void {
-    if (data) {
-      this.default = data;
-    }
-  }
-
-  borrarFila(cod: number) {
-    if (confirm("Realmente quiere borrarlo?")) {
-      this.datos.splice(cod, 1);
-      this.tabla1.renderRows();
-    }
-  }
-
-  agregar() {
-    //this.datos.push(new Articulo(this.articuloselect.id, this.articuloselect.name, this.articuloselect.prize));
-    //this.tabla1.renderRows();
-    //this.articuloselect = new Articulo(0, "", 0);
   }
 }

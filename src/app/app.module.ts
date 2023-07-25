@@ -26,6 +26,9 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
 import { CertificateComponent } from './components/dialogs/certificate/certificate.component';
 
+import { MatPaginatorModule } from '@angular/material/paginator';
+
+
 
 @NgModule({
   declarations: [
@@ -47,7 +50,7 @@ import { CertificateComponent } from './components/dialogs/certificate/certifica
     AppRoutingModule, 
     HttpClientModule, BrowserAnimationsModule,
     MatTableModule, FormsModule, MatInputModule, MatButtonModule,
-    MatDialogModule
+    MatDialogModule, MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
