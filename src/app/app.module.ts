@@ -18,6 +18,14 @@ import { MonthlyPaymentsComponent } from './pages/monthly-payments/monthly-payme
 import { MyCoursesComponent } from './pages/my-courses/my-courses.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { MatTableModule } from '@angular/material/table';
+import {FormsModule} from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+
+import {MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
+import { CertificateComponent } from './components/dialogs/certificate/certificate.component';
+
 
 @NgModule({
   declarations: [
@@ -31,12 +39,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     PokeapiComponent,
     SpringbootSimpleCrudComponent,
     MonthlyPaymentsComponent,
-    MyCoursesComponent
+    MyCoursesComponent,
+    CertificateComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule, 
-    HttpClientModule, BrowserAnimationsModule
+    HttpClientModule, BrowserAnimationsModule,
+    MatTableModule, FormsModule, MatInputModule, MatButtonModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
