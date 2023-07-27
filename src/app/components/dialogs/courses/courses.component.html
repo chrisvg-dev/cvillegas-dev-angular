@@ -1,10 +1,7 @@
 <mat-toolbar color="primary">
-    <div class="container">
-        <span>Add new course</span>
+    <div class="container">        
+        <span><button mat-button mat-stroked-button color="basic" (click)="closeDialog()">Close</button> &nbsp; Add new course</span>
         <span class="example-spacer"></span>
-        <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-            <mat-icon>favorite</mat-icon>
-        </button>
     </div>
 </mat-toolbar>
 <div class="mt-4">
@@ -35,13 +32,10 @@
                             {{ uploadInfo }}
                         </div>
                     </div>
-                </div>
-
-                
+                </div>              
     
                 <div class="mt-4">
-                    <button type="submit" mat-button mat-raised-button color="primary">Save</button> &nbsp;
-                    <button mat-button mat-raised-button color="basic" (click)="closeDialog()">Close</button>
+                    <button [disabled]="!courseForm.valid" type="submit" mat-button mat-raised-button color="primary">Save</button> &nbsp;
                 </div>
             </form>
         </div>

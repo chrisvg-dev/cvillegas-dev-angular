@@ -15,7 +15,7 @@ export class CoursesComponent implements OnInit {
   fromPage!: string;
   fromDialog!: string;
 
-  defaultUploadMessage: any = 'Drop files here. (This is just a demo dropzone. Selected files are actually uploaded.)';
+  defaultUploadMessage: any = 'Drop files here.';
 
   uploadInfo: string = this.defaultUploadMessage;
 
@@ -38,7 +38,7 @@ export class CoursesComponent implements OnInit {
       language: ['', Validators.required],
       type: ['', Validators.required],
       platform: ['', Validators.required],     
-      certificate: [null, Validators.required]
+      certificate: ['']
    })
 
    this.fromDialog = "Success";
@@ -63,17 +63,17 @@ export class CoursesComponent implements OnInit {
       this.toastr.error('No puedes agregar mas archivos');
       return;
     }
-    this.file = allFiles[0];
 
-    if ( !this.validFormats.includes( this.file.type ) ) {
+    if ( !this.validFormats.includes( allFiles[0].type ) ) {
       this.toastr.error('No puedes agregar este formato de archivo.');
       return;
     }
 
+    this.file = allFiles[0];
+
     this.allFiles.push(this.file);
     this.hasFile = true;
 
-    console.log(this.file)
     var reader = new FileReader();
     
     reader.onload = (event:any) => {
@@ -97,8 +97,11 @@ export class CoursesComponent implements OnInit {
     this.courseForm.get('certificate')!.setValue(certificate);
   }
 
-  submitForm() {   
-    let formData: any = new FormData();        
+  submitForm() {
+
+    if (!this.hasFile) { this.toastr.error('You need to add a certificate file.', 'Lack of information'); return; }
+
+    let formData: FormData = new FormData();        
     let course = new Course(
       0,  
       this.courseForm.get('name')!.value, 
@@ -125,7 +128,7 @@ export class CoursesComponent implements OnInit {
    
   } 
 
-  closeDialog() { this.dialogRef.close({ event: 'close', data: this.fromDialog }); }
-
-
+  closeDialog() { 
+    this.dialogRef.close({ event: 'close', data: this.fromDialog }); 
+  }
 }

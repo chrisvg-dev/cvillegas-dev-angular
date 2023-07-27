@@ -43,6 +43,8 @@ import { LoaderService } from './services/loader.service';
 import { LoaderInterceptor } from './interceptors/loader-interceptor.service';
 
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { LearningComponent } from './pages/learning/learning.component';
+import { ProjectsComponent } from './pages/projects/projects.component';
 
 
 
@@ -65,7 +67,9 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     CoursesComponent,
     NotificationComponent,
     DropzoneDirective,
-    MyLoaderComponent
+    MyLoaderComponent,
+    LearningComponent,
+    ProjectsComponent
   ],
   imports: [
     BrowserModule,

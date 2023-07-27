@@ -7,6 +7,9 @@ import { PokeapiComponent } from './pages/pokeapi/pokeapi.component';
 import { SpringbootSimpleCrudComponent } from './pages/springboot-simple-crud/springboot-simple-crud.component';
 import { MonthlyPaymentsComponent } from './pages/monthly-payments/monthly-payments.component';
 import { MyCoursesComponent } from './pages/my-courses/my-courses.component';
+import { LearningComponent } from './pages/learning/learning.component';
+import { SugestionsComponent } from './components/sugestions/sugestions.component';
+import { ProjectsComponent } from './pages/projects/projects.component';
 
 const routes: Routes = [
   {
@@ -26,6 +29,12 @@ const routes: Routes = [
   },
   {
     path: 'my-courses', component: MyCoursesComponent
+  },
+  {
+    path: 'my-learning', component: LearningComponent
+  },
+  {
+    path: 'my-projects', component: ProjectsComponent
   },
   {
     path: '', component: HomeComponent, pathMatch: 'full'

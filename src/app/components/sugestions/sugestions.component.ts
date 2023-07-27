@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'app-sugestions',
+  selector: 'projects',
   templateUrl: './sugestions.component.html',
   styleUrls: ['./sugestions.component.css']
 })

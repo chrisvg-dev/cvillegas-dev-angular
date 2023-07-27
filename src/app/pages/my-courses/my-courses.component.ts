@@ -45,7 +45,7 @@ export class MyCoursesComponent implements OnInit {
   }
 
   openRegisterCourseDialog() {
-    const courseDialog = this.dialog.open(CoursesComponent, { width: '700px', height: '650px' });
+    const courseDialog = this.dialog.open(CoursesComponent, { width: '700px' });
     courseDialog.afterClosed().subscribe((res) => {
       console.log({ res });
       this.certificate = null;
