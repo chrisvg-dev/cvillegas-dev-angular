@@ -2,9 +2,18 @@
     <h1 class="text-center">My learning path</h1>
 </div>
 
-<form class="col-md-4" (submit)="loadCertificatesByCriteria(filter.value)">
-	<input type="text" class="form-control" placeholder="Find by technology" #filter>
-</form>
+<div class="row">
+	<form class="col-md-4" (submit)="loadCertificatesByCriteria(filter.value)">
+		<input type="text" class="form-control" placeholder="Find by technology" #filter>
+	</form>
+
+	<div class="offset-md-6 col-md-2">
+		<button mat-raised-button color="primary" (click)="openRegisterCourseDialog()">Add new</button>
+	</div>
+</div>
+
+
+
 <div class="courses-container">
 	<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" #tabla1>
 		<ng-container matColumnDef="Id">
@@ -40,7 +49,15 @@
 		<ng-container matColumnDef="Options">
 		  <th mat-header-cell *matHeaderCellDef> Options </th>
 		  <td mat-cell *matCellDef="let articulo">
-			<button mat-raised-button color="warn" (click)="openCompDialog(articulo.id)" >See</button>
+			<button mat-mini-fab color="primary" aria-label="Example icon button with a delete icon" (click)="openCompDialog(articulo.id)">
+				<mat-icon>slideshow</mat-icon>
+			</button> &nbsp;
+
+			<button mat-mini-fab color="warn" aria-label="Example icon button with a delete icon" (click)="deleteCourseById(articulo.id)" disabled="">
+				<mat-icon>delete</mat-icon>
+			</button>
+
+			
 		  </td>
 		</ng-container>
 	  

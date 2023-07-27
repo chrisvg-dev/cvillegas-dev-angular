@@ -19,14 +19,17 @@ import { MyCoursesComponent } from './pages/my-courses/my-courses.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatTableModule } from '@angular/material/table';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+
 
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
 import { CertificateComponent } from './components/dialogs/certificate/certificate.component';
 
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { CoursesComponent } from './components/dialogs/courses/courses.component';
 
 
 @NgModule({
@@ -42,14 +45,15 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     SpringbootSimpleCrudComponent,
     MonthlyPaymentsComponent,
     MyCoursesComponent,
-    CertificateComponent
+    CertificateComponent,
+    CoursesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule, 
     HttpClientModule, BrowserAnimationsModule,
     MatTableModule, FormsModule, MatInputModule, MatButtonModule,
-    MatDialogModule, MatPaginatorModule
+    MatDialogModule, MatPaginatorModule, ReactiveFormsModule, MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

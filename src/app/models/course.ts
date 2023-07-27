@@ -6,7 +6,5 @@ export class Course {
       public description: string,
       public type: string,
       public platform: string,
-      public file: string,
-      public createdAt: string,
-      public updatedAt: string){}
+      public file: any){}
   }

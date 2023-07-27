@@ -15,23 +15,14 @@ export class CertificateComponent {
 
   constructor(
     public dialogRef: MatDialogRef<CertificateComponent>,
-    @Optional() @Inject(MAT_DIALOG_DATA) public certificate: number,
+    @Optional() @Inject(MAT_DIALOG_DATA) public certificate: string,
     private springBoot: SpringbootService
-  ) { }
-
-  ngOnInit(): void {
-    this.fromDialog = "I am from dialog land...";
-    this.loadCertificateFromDatabase(this.certificate);
+  ) {
+    this.certificateString = certificate;
   }
 
-  loadCertificateFromDatabase(certificateId: number) {
-    this.springBoot.findMyCertificate(certificateId).subscribe({
-      next: resp => {
-        console.log(resp)
-        this.certificateString = resp;
-      },
-      error: err => console.error(err)
-    });
+  ngOnInit(): void {
+    this.fromDialog = "Success";
   }
 
   closeDialog() { this.dialogRef.close({ event: 'close', data: this.fromDialog }); }

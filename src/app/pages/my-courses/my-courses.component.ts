@@ -2,11 +2,16 @@ import { Component, OnInit, ViewChild, Inject, TemplateRef } from '@angular/core
 import { MAT_DIALOG_DATA, MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { timer } from 'rxjs';
 import { CertificateComponent } from 'src/app/components/dialogs/certificate/certificate.component';
 import { Articulo } from 'src/app/models/articulo';
 import { Course } from 'src/app/models/course';
 import { SpringbootService } from 'src/app/services/springboot.service';
 import { environment } from 'src/environments/environment';
+
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CoursesComponent } from 'src/app/components/dialogs/courses/courses.component';
+
 
 @Component({
   selector: 'app-my-courses',
@@ -21,7 +26,7 @@ export class MyCoursesComponent implements OnInit {
   columnas: string[] = ['Id', 'Name', 'Description', 'Language', 'Type', 'Platform', 'Options'];
   datos: Course[] = [];
 
-  articuloselect: Course = new Course(0, '','','','','','','','');
+  articuloselect: Course = new Course(0, '','','','','','');
 
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
 
@@ -30,23 +35,47 @@ export class MyCoursesComponent implements OnInit {
 
   dataSource:any;
 
-  certificate!: number;
-  
+  certificate: any = null;
+
   constructor(private springBootService: SpringbootService, public dialog: MatDialog) {}
 
-  openCompDialog(certificate: number) {
-    const myCompDialog = this.dialog.open(CertificateComponent, { data: certificate, width: '900px', height: 'auto' });
-    myCompDialog.afterClosed().subscribe((res) => {
-      // Data back from dialog
+  saveCourse() {
+
+  }
+
+  openRegisterCourseDialog() {
+    const courseDialog = this.dialog.open(CoursesComponent, { width: '900px', height: 'auto' });
+    courseDialog.afterClosed().subscribe((res) => {
       console.log({ res });
+      this.certificate = null;
+    });
+  }
+
+  openCompDialog(certificate: number) {
+    this.springBootService.findMyCertificate(certificate).subscribe({
+      next: resp => {
+        
+        let value = this.nullSafe(resp);
+
+        if (value != '') {
+          const myCompDialog = this.dialog.open(CertificateComponent, { data: resp, width: '900px', height: 'auto' });
+          myCompDialog.afterClosed().subscribe((res) => {
+            console.log({ res });
+          });
+        } else {
+          alert('There is no value');
+        }
+
+      },
+      error: err => console.error(err)
     });
   }
   
-  async ngOnInit() {
-    await this.loadCertificatesByCriteria('');
+  ngOnInit() {
+    this.loadCertificatesByCriteria('');
   }
 
-  async loadCertificatesByCriteria(criteria: string): Promise<any> {
+  loadCertificatesByCriteria(criteria: string): any {
     this.springBootService.findMyCourses(criteria).subscribe({
       next: (data) => {
         this.data = data;
@@ -56,5 +85,21 @@ export class MyCoursesComponent implements OnInit {
         this.dataSource.paginator = this.paginator;
       },
       error: error => { throw new Error(error) }    });
+  }
+
+  deleteCourseById(id: number): any {
+    if (confirm('Are you sure you want delete this row?') ) {
+      this.springBootService.deleteCourse(id).subscribe({
+        next: (data) => {
+          alert(data);
+          this.loadCertificatesByCriteria('');
+        },
+        error: error => { throw new Error(error) }    });
+    }
+  }
+
+  nullSafe(value: any): string {
+    if (value == undefined || value == null) return '';
+    return value;
   }
 }
