@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 import { Course } from 'src/app/models/course';
 import { SpringbootService } from 'src/app/services/springboot.service';
 
@@ -16,7 +17,7 @@ export class CoursesComponent implements OnInit {
 
   public courseForm!: FormGroup; 
 
-  constructor(private springBootService: SpringbootService, private formBuilder: FormBuilder, public dialogRef: MatDialogRef<CoursesComponent>,) {}
+  constructor(private springBootService: SpringbootService, private formBuilder: FormBuilder, public dialogRef: MatDialogRef<CoursesComponent>, private toastr: ToastrService) {}
 
   ngOnInit() {
     this.courseForm = this.formBuilder.group({   
@@ -60,7 +61,11 @@ export class CoursesComponent implements OnInit {
 
     this.springBootService.saveCourse(formData).subscribe({
       next: resp => {
-        console.log(resp);
+        let data = resp as any;
+        this.toastr.success(data.message, data.code);
+        if (data.code == 'OK') {
+          this.dialogRef.close({ event: 'close', data: resp });
+        }
       },
       error: err => console.error(err)
     });

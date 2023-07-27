@@ -31,6 +31,12 @@ import { CertificateComponent } from './components/dialogs/certificate/certifica
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { CoursesComponent } from './components/dialogs/courses/courses.component';
 
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { NotificationComponent } from './components/dialogs/notification/notification.component';
+
+import { ToastrModule } from 'ngx-toastr';
+
+
 
 @NgModule({
   declarations: [
@@ -46,14 +52,15 @@ import { CoursesComponent } from './components/dialogs/courses/courses.component
     MonthlyPaymentsComponent,
     MyCoursesComponent,
     CertificateComponent,
-    CoursesComponent
+    CoursesComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule, 
     HttpClientModule, BrowserAnimationsModule,
     MatTableModule, FormsModule, MatInputModule, MatButtonModule,
-    MatDialogModule, MatPaginatorModule, ReactiveFormsModule, MatIconModule
+    MatDialogModule, MatPaginatorModule, ReactiveFormsModule, MatIconModule, MatToolbarModule, ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

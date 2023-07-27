@@ -11,6 +11,7 @@ import { environment } from 'src/environments/environment';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CoursesComponent } from 'src/app/components/dialogs/courses/courses.component';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -37,14 +38,14 @@ export class MyCoursesComponent implements OnInit {
 
   certificate: any = null;
 
-  constructor(private springBootService: SpringbootService, public dialog: MatDialog) {}
+  constructor(private springBootService: SpringbootService, public dialog: MatDialog, private toastr: ToastrService) {}
 
   saveCourse() {
 
   }
 
   openRegisterCourseDialog() {
-    const courseDialog = this.dialog.open(CoursesComponent, { width: '900px', height: 'auto' });
+    const courseDialog = this.dialog.open(CoursesComponent, { width: '700px', height: '450px' });
     courseDialog.afterClosed().subscribe((res) => {
       console.log({ res });
       this.certificate = null;
@@ -58,7 +59,7 @@ export class MyCoursesComponent implements OnInit {
         let value = this.nullSafe(resp);
 
         if (value != '') {
-          const myCompDialog = this.dialog.open(CertificateComponent, { data: resp, width: '900px', height: 'auto' });
+          const myCompDialog = this.dialog.open(CertificateComponent, { data: resp, width: '800px', height: 'auto' });
           myCompDialog.afterClosed().subscribe((res) => {
             console.log({ res });
           });
@@ -91,7 +92,8 @@ export class MyCoursesComponent implements OnInit {
     if (confirm('Are you sure you want delete this row?') ) {
       this.springBootService.deleteCourse(id).subscribe({
         next: (data) => {
-          alert(data);
+          let resp = data as any;
+          this.toastr.warning(resp.message, resp.code);
           this.loadCertificatesByCriteria('');
         },
         error: error => { throw new Error(error) }    });
