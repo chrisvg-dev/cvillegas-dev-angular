@@ -45,10 +45,11 @@ export class MyCoursesComponent implements OnInit {
   }
 
   openRegisterCourseDialog() {
-    const courseDialog = this.dialog.open(CoursesComponent, { width: '700px', height: '450px' });
+    const courseDialog = this.dialog.open(CoursesComponent, { width: '700px', height: '650px' });
     courseDialog.afterClosed().subscribe((res) => {
       console.log({ res });
       this.certificate = null;
+      this.loadCertificatesByCriteria('');
     });
   }
 

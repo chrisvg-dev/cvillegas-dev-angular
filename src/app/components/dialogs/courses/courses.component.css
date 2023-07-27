@@ -5,3 +5,10 @@
 .footer button {
     position: relative;
 }
+
+.dropzone {
+    border: 1px solid gray;
+    background-color: rgb(83, 74, 96);
+    padding: 40px 40px;
+    color: lightgray;
+ }

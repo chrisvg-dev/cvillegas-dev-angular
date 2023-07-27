@@ -15,7 +15,19 @@ export class CoursesComponent implements OnInit {
   fromPage!: string;
   fromDialog!: string;
 
+  defaultUploadMessage: any = 'Drop files here. (This is just a demo dropzone. Selected files are actually uploaded.)';
+
+  uploadInfo: string = this.defaultUploadMessage;
+
   public courseForm!: FormGroup; 
+
+  allFiles: File[] = [];
+  file!: File;
+
+  url: string = '';
+  hasFile: boolean = false;
+
+  validFormats: string = 'image/png, image/jpeg, image/jpg';
 
   constructor(private springBootService: SpringbootService, private formBuilder: FormBuilder, public dialogRef: MatDialogRef<CoursesComponent>, private toastr: ToastrService) {}
 
@@ -30,6 +42,47 @@ export class CoursesComponent implements OnInit {
    })
 
    this.fromDialog = "Success";
+  }
+
+  readURL(event:any) {
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+  
+      reader.onload = (event:any) => {
+       this.url = event.target.result;
+      }
+  
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  }
+
+  droppedFiles(allFiles: File[], event: any): void {
+    const filesAmount = allFiles.length;
+
+    if (this.allFiles.length > 0) {
+      this.toastr.error('No puedes agregar mas archivos');
+      return;
+    }
+    this.file = allFiles[0];
+
+    if ( !this.validFormats.includes( this.file.type ) ) {
+      this.toastr.error('No puedes agregar este formato de archivo.');
+      return;
+    }
+
+    this.allFiles.push(this.file);
+    this.hasFile = true;
+
+    console.log(this.file)
+    var reader = new FileReader();
+    
+    reader.onload = (event:any) => {
+      this.url = event.target.result;
+    }
+
+    reader.readAsDataURL(this.file);
+    
+    console.log( 'Cantidad: ' + this.allFiles.length );
   }
 
   uploadFile(event: any, fileType: string) {  
@@ -57,7 +110,7 @@ export class CoursesComponent implements OnInit {
     );
 
     formData.append('course', new Blob([JSON.stringify(course)], { type: 'application/json' }));
-    formData.append('file', this.courseForm.get('certificate')!.value);
+    formData.append('file', this.file);
 
     this.springBootService.saveCourse(formData).subscribe({
       next: resp => {

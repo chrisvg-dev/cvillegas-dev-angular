@@ -9,7 +9,7 @@ import { SugestionsComponent } from './components/sugestions/sugestions.componen
 import { HelloWorldComponent } from './pages/hello-world/hello-world.component';
 import { HomeComponent } from './pages/home/home.component';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { GithubComponent } from './pages/github/github.component';
 import { PokeapiComponent } from './pages/pokeapi/pokeapi.component';
 import { SpringbootSimpleCrudComponent } from './pages/springboot-simple-crud/springboot-simple-crud.component';
@@ -35,6 +35,16 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { NotificationComponent } from './components/dialogs/notification/notification.component';
 
 import { ToastrModule } from 'ngx-toastr';
+import { DropzoneDirective } from './dropzone.directive';
+
+import {MatTreeFlatDataSource, MatTreeFlattener, MatTreeModule} from '@angular/material/tree';
+import { MyLoaderComponent } from './components/my-loader/my-loader.component';
+import { LoaderService } from './services/loader.service';
+import { LoaderInterceptor } from './interceptors/loader-interceptor.service';
+
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
+
 
 
 
@@ -53,16 +63,22 @@ import { ToastrModule } from 'ngx-toastr';
     MyCoursesComponent,
     CertificateComponent,
     CoursesComponent,
-    NotificationComponent
+    NotificationComponent,
+    DropzoneDirective,
+    MyLoaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule, 
     HttpClientModule, BrowserAnimationsModule,
     MatTableModule, FormsModule, MatInputModule, MatButtonModule,
-    MatDialogModule, MatPaginatorModule, ReactiveFormsModule, MatIconModule, MatToolbarModule, ToastrModule.forRoot()
+    MatDialogModule, MatPaginatorModule, ReactiveFormsModule, MatIconModule, MatToolbarModule, ToastrModule.forRoot(),
+    MatTreeModule, MatProgressSpinnerModule
   ],
-  providers: [],
+  providers: [
+    LoaderService,
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
