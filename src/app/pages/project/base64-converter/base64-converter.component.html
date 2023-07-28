@@ -1,0 +1,37 @@
+<div class="container col-xxl-8 px-4 py-5">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+      <div class="col-10 col-sm-8 col-lg-6">
+        <div class="dropzone" style="border: 1px dashed black;" DropZone (onFileDropped)="droppedFiles($event, $event)">
+            <article>
+                <strong>{{ message }}</strong> <br><br> 
+                <div *ngIf="hasFile">
+                    <span>Name:  {{ data.name }} </span>
+                    <span>Size:  {{ data.size }} </span>
+                    <span>Type:  {{ data.type }} </span>
+                </div>
+            </article>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <h1 class="display-5 fw-bold lh-1 mb-3">Base64 converter</h1>
+        <p class="">
+            Here is an example of an application which receive files and It convert them to a base64 encoded string.
+        </p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+          <button type="button" class="btn btn-primary btn-lg px-4 me-md-2" (click)="convertToBase64()">Convert</button>
+          <button type="button" class="btn btn-outline-secondary btn-lg px-4" (click)="cleanFiles()">Clean</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="code">
+        <h2>Here you are</h2><hr>
+        <div class="container working mt-5" *ngIf="base64 == ''">
+            <mat-progress-spinner mode="indeterminate" />
+            <h2 class="text-center mt-5"> Upload your file </h2>
+        </div>
+        <div *ngIf="base64 != ''" class="base64Container">
+            <code  class="code-style">{{ base64 }}</code>
+        </div>
+    </div>
+  </div>

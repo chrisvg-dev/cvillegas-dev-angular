@@ -45,6 +45,7 @@ import { LoaderInterceptor } from './interceptors/loader-interceptor.service';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { LearningComponent } from './pages/learning/learning.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
+import { Base64ConverterComponent } from './pages/project/base64-converter/base64-converter.component';
 
 
 
@@ -69,7 +70,8 @@ import { ProjectsComponent } from './pages/projects/projects.component';
     DropzoneDirective,
     MyLoaderComponent,
     LearningComponent,
-    ProjectsComponent
+    ProjectsComponent,
+    Base64ConverterComponent
   ],
   imports: [
     BrowserModule,

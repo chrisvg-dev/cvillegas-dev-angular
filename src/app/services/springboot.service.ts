@@ -37,4 +37,10 @@ export class SpringbootService {
   deleteCourse(id: number) {
     return this.http.delete( `${URL}/data/my-courses/${id}`);
   }
+
+  // Base 64 converter application
+
+  convertToBase64(formData: FormData) {
+    return this.http.post( `${URL}/apps/base64Converter`, formData);
+  }
 }

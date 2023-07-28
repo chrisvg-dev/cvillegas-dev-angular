@@ -10,6 +10,7 @@ import { MyCoursesComponent } from './pages/my-courses/my-courses.component';
 import { LearningComponent } from './pages/learning/learning.component';
 import { SugestionsComponent } from './components/sugestions/sugestions.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
+import { Base64ConverterComponent } from './pages/project/base64-converter/base64-converter.component';
 
 const routes: Routes = [
   {
@@ -37,8 +38,12 @@ const routes: Routes = [
     path: 'my-projects', component: ProjectsComponent
   },
   {
+    path: 'base64Converter', component: Base64ConverterComponent
+  },
+  {
     path: '', component: HomeComponent, pathMatch: 'full'
   },
+  // Aqui van los proyectos
   {
     path: '**', redirectTo: ''
   },
