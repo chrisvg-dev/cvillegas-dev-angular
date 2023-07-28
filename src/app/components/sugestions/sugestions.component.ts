@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { SpringbootService } from 'src/app/services/springboot.service';
 
 @Component({
   selector: 'projects',
@@ -9,13 +10,12 @@ import { HttpClient } from '@angular/common/http';
 export class SugestionsComponent implements OnInit {
   public data: any = [];
 
-  constructor(private http: HttpClient){}
+  constructor(private http: SpringbootService){}
   
   ngOnInit(): void {
-    this.http.get('https://cvillegas-dev.com:9191/data/projects').subscribe(
-      data => {
-        console.log(data);
-        this.data = data;
+    this.http.findProjects().subscribe(
+      {
+        next: resp => this.data = resp
       }
     );
   }

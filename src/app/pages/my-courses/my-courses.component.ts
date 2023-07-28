@@ -12,6 +12,8 @@ import { environment } from 'src/environments/environment';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CoursesComponent } from 'src/app/components/dialogs/courses/courses.component';
 import { ToastrService } from 'ngx-toastr';
+import { LocalStorageService } from 'src/app/security/jwt/local-storage-service.service';
+import { LocalAuthenticationService } from 'src/app/services/auth/local-authentication.service';
 
 
 @Component({
@@ -38,10 +40,16 @@ export class MyCoursesComponent implements OnInit {
 
   certificate: any = null;
 
-  constructor(private springBootService: SpringbootService, public dialog: MatDialog, private toastr: ToastrService) {}
+  isLogged: boolean = false;
 
-  saveCourse() {
+  constructor(private springBootService: SpringbootService, 
+    public dialog: MatDialog, 
+    private toastr: ToastrService, 
+    private authService: LocalAuthenticationService,) { }
 
+  ngOnInit() {
+    this.loadCertificatesByCriteria('');
+    this.isLogged = this.authService.isLogged();
   }
 
   openRegisterCourseDialog() {
@@ -73,9 +81,6 @@ export class MyCoursesComponent implements OnInit {
     });
   }
   
-  ngOnInit() {
-    this.loadCertificatesByCriteria('');
-  }
 
   loadCertificatesByCriteria(criteria: string): any {
     this.springBootService.findMyCourses(criteria).subscribe({

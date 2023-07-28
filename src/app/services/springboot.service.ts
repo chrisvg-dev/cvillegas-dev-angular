@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Project } from '../models/project.model';
 import { environment } from 'src/environments/environment';
 import { Course } from '../models/course';
+import { LocalStorageService } from '../security/jwt/local-storage-service.service';
 
 const URL = environment.SERVER;
 
@@ -11,10 +12,26 @@ const URL = environment.SERVER;
   providedIn: 'root'
 })
 export class SpringbootService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private storage: LocalStorageService) { }
+
+  // Security
+  login(request: any): Observable<any> {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
+    return this.http.post<any[]>(`${URL}/auth/login`, request, { headers, withCredentials: true });
+  }
+  logOut(): Observable<any> {
+    this.storage.set('isLogged', 'false');
+    const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
+    return this.http.get(`${URL}/auth/logOut`, { headers, withCredentials: true });
+  }
+
+  // Data Projects
+  findProjects()  {
+    return this.http.get(`${URL}/data/projects`, {withCredentials: true})
+  }
 
   findAll(): Observable<Project[]> {
-    return this.http.get<Project[]>(`${URL}/data/projects`);
+    return this.http.get<Project[]>(`${URL}/data/projects`, {withCredentials: true});
   }
 
   findMonthlyPayments(): Observable<any[]> {

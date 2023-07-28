@@ -46,9 +46,9 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { LearningComponent } from './pages/learning/learning.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
 import { Base64ConverterComponent } from './pages/project/base64-converter/base64-converter.component';
-
-
-
+import { LoginComponent } from './security/dialogs/login/login.component';
+import { UniversalAppInterceptor } from './security/jwt/universal-app-interceptor.service';
+import { LocalStorageService } from './security/jwt/local-storage-service.service';
 
 
 @NgModule({
@@ -71,7 +71,8 @@ import { Base64ConverterComponent } from './pages/project/base64-converter/base6
     MyLoaderComponent,
     LearningComponent,
     ProjectsComponent,
-    Base64ConverterComponent
+    Base64ConverterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -83,7 +84,9 @@ import { Base64ConverterComponent } from './pages/project/base64-converter/base6
   ],
   providers: [
     LoaderService,
+    LocalStorageService,
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: UniversalAppInterceptor , multi: true },
   ],
   bootstrap: [AppComponent]
 })

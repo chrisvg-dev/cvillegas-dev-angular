@@ -8,7 +8,7 @@
 			<input type="text" class="form-control" placeholder="Find by technology" #filter>
 		</form>
 	
-		<div class="offset-md-6 col-md-2">
+		<div class="offset-md-6 col-md-2" [hidden]="!isLogged">
 			<button mat-raised-button color="primary" (click)="openRegisterCourseDialog()">Add new</button>
 		</div>
 	</div>
@@ -54,7 +54,7 @@
 					<mat-icon>slideshow</mat-icon>
 				</button> &nbsp;
 	
-				<button mat-mini-fab color="warn" aria-label="Example icon button with a delete icon" (click)="deleteCourseById(articulo.id)">
+				<button mat-mini-fab color="warn" aria-label="Example icon button with a delete icon" (click)="deleteCourseById(articulo.id)" [hidden]="!isLogged">
 					<mat-icon>delete</mat-icon>
 				</button>
 	
