@@ -30,6 +30,10 @@ export class SpringbootService {
     return this.http.get(`${URL}/data/projects`, {withCredentials: true})
   }
 
+  findTechSkill()  {
+    return this.http.get(`${URL}/data/tech-skill`, {withCredentials: true})
+  }
+
   findAll(): Observable<Project[]> {
     return this.http.get<Project[]>(`${URL}/data/projects`, {withCredentials: true});
   }

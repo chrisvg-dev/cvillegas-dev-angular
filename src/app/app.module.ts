@@ -50,6 +50,8 @@ import { LoginComponent } from './security/dialogs/login/login.component';
 import { UniversalAppInterceptor } from './security/jwt/universal-app-interceptor.service';
 import { LocalStorageService } from './security/jwt/local-storage-service.service';
 import { BusPipelineModule } from './modules/bus-pipeline/bus-pipeline.module';
+import { SliderComponent } from './components/slider/slider.component';
+import { TechnologiesComponent } from './components/technologies/technologies.component';
 
 
 @NgModule({
@@ -73,7 +75,9 @@ import { BusPipelineModule } from './modules/bus-pipeline/bus-pipeline.module';
     LearningComponent,
     ProjectsComponent,
     Base64ConverterComponent,
-    LoginComponent
+    LoginComponent,
+    SliderComponent,
+    TechnologiesComponent
   ],
   imports: [
     BrowserModule,
