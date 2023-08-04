@@ -48,7 +48,7 @@ const routes: Routes = [
     path: 'my-projects', component: ProjectsComponent
   },
   {
-    path: 'base64Converter', component: Base64ConverterComponent, //canActivate: [AuthorizeGuard]
+    path: 'base64Converter', component: Base64ConverterComponent,
   },
   {
     path: '', component: HomeComponent, pathMatch: 'full'
