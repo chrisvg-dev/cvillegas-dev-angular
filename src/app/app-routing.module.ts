@@ -8,12 +8,21 @@ import { SpringbootSimpleCrudComponent } from './pages/springboot-simple-crud/sp
 import { MonthlyPaymentsComponent } from './pages/monthly-payments/monthly-payments.component';
 import { MyCoursesComponent } from './pages/my-courses/my-courses.component';
 import { LearningComponent } from './pages/learning/learning.component';
-import { SugestionsComponent } from './components/sugestions/sugestions.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
 import { Base64ConverterComponent } from './pages/project/base64-converter/base64-converter.component';
 import { AuthorizeGuard } from './security/jwt/authorize-guard.service';
+import { BusPipelineRoutingModule } from './modules/bus-pipeline/arkon-routing.module';
+
+
 
 const routes: Routes = [
+  // Modules
+
+  {
+    path: 'arkon', // This will be the route where the new module will be loaded
+    loadChildren: () => import('./modules/bus-pipeline/bus-pipeline.module').then(m => m.BusPipelineModule)
+  },
+
   {
     path: 'hello-world', component: HelloWorldComponent, pathMatch: 'full'
   },
@@ -39,7 +48,7 @@ const routes: Routes = [
     path: 'my-projects', component: ProjectsComponent
   },
   {
-    path: 'base64Converter', component: Base64ConverterComponent, canActivate: [AuthorizeGuard]
+    path: 'base64Converter', component: Base64ConverterComponent, //canActivate: [AuthorizeGuard]
   },
   {
     path: '', component: HomeComponent, pathMatch: 'full'
@@ -51,7 +60,10 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true })],
+  imports: [
+    RouterModule.forRoot(routes, { useHash: true }),
+    BusPipelineRoutingModule 
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

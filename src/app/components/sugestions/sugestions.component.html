@@ -1,17 +1,17 @@
 <div class="my-3 p-3 bg-body rounded shadow-sm">
-  <h6 class="border-bottom pb-2 mb-0">Projects</h6>
-  <div class="card col-md-3" *ngFor="let project of data">
-    <a class="generic_link" routerLink="{{ project.component }}">
-      <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-        <div class="card-style">
-          <i class="fa fa-github fa-5x"></i>
-          <strong class="text-gray-dark">{{ project.title }}</strong>
-          <span class="d-block"> {{ project.username }} </span>
+  <h6 class="border-bottom pb-2 mb-0"></h6>
+  
+  <div class="container projects">
+    <div class="card col-md-3" *ngFor="let project of data">
+      <a class="generic_link" routerLink="{{ project.component }}">
+        <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+          <div class="card-style">
+            <mat-icon class="icon">code</mat-icon>
+            <strong class="text-gray-dark">{{ project.title }}</strong>
+          </div>
         </div>
-      </div>
-      <p>
-        {{ project.description }}
-      </p>
-    </a>
+      </a>
+    </div>
   </div>
+
 </div>

@@ -49,6 +49,7 @@ import { Base64ConverterComponent } from './pages/project/base64-converter/base6
 import { LoginComponent } from './security/dialogs/login/login.component';
 import { UniversalAppInterceptor } from './security/jwt/universal-app-interceptor.service';
 import { LocalStorageService } from './security/jwt/local-storage-service.service';
+import { BusPipelineModule } from './modules/bus-pipeline/bus-pipeline.module';
 
 
 @NgModule({
@@ -80,7 +81,7 @@ import { LocalStorageService } from './security/jwt/local-storage-service.servic
     HttpClientModule, BrowserAnimationsModule,
     MatTableModule, FormsModule, MatInputModule, MatButtonModule,
     MatDialogModule, MatPaginatorModule, ReactiveFormsModule, MatIconModule, MatToolbarModule, ToastrModule.forRoot(),
-    MatTreeModule, MatProgressSpinnerModule
+    MatTreeModule, MatProgressSpinnerModule, BusPipelineModule
   ],
   providers: [
     LoaderService,
