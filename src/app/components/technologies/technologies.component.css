@@ -1,5 +1,5 @@
 .tech-wrapper {
-    
+
 }
 
 .tech-wrapper h2 {
@@ -14,18 +14,11 @@
     margin-bottom: 1.5em;
 }
 
-.technologies {
-    display: flex;
-    flex-wrap: wrap;
-}
-
 .card {
-    flex: 1 0 21%; /* explanation below */
   margin: 5px;
-  height: auto;
-  height: 210px;
   display: grid;
   place-items: center;
+  
 }
 
 .card img {
@@ -40,4 +33,8 @@
     font-size: 15px;;
     text-align: center;
     display: none;
+}
+
+.technologies {
+    text-align: center;
 }

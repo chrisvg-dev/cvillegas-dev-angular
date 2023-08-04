@@ -1,14 +1,16 @@
-<div class="container mt-5 text-center tech-wrapper">
+<div class="mt-5 text-center tech-wrapper" style="width: 85%; margin: auto; text-align: center;">
     <h2>My technical skills</h2>
 
     <p>
         I have worked with this technologies. And I'm still learning how to improve my skills much more.
     </p>
 
-    <div class="technologies">
-        <div class="card hvr-underline-from-left" style="width: 18rem;" *ngFor="let skill of teckSkills">
+    <div class="row" style="width: 100%; text-align: center;">
+        <div class="card hvr-underline-from-left col-md-2 col-sm-5" *ngFor="let skill of teckSkills">
             <img class="card-img-top" src="{{ skill.image }}" alt="Card image cap">
-            <h5 class="card-title" style="position: absolute;">Card title</h5>
+            <div class="level">
+
+            </div>
         </div>
     </div>
 </div>
