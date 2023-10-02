@@ -12,6 +12,7 @@ import { ProjectsComponent } from './pages/projects/projects.component';
 import { Base64ConverterComponent } from './pages/project/base64-converter/base64-converter.component';
 import { AuthorizeGuard } from './security/jwt/authorize-guard.service';
 import { BusPipelineRoutingModule } from './modules/bus-pipeline/arkon-routing.module';
+import { CustomCrudAppComponent } from './pages/project/custom-crud-app/custom-crud-app.component';
 
 
 
@@ -49,6 +50,9 @@ const routes: Routes = [
   },
   {
     path: 'base64Converter', component: Base64ConverterComponent,
+  },
+  {
+    path: 'custom-crud-app', component: CustomCrudAppComponent,
   },
   {
     path: '', component: HomeComponent, pathMatch: 'full'

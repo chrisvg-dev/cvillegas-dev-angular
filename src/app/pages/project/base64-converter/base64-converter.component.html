@@ -1,24 +1,29 @@
-<div class="container col-xxl-8 px-4 py-5">
-    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-      <div class="col-10 col-sm-8 col-lg-6">
+<div class="container px-4 py-5">
+    <div class="row align-items-center py-5">
+      <h1 class="display-5 fw-bold lh-1 mb-3">Base64 converter</h1>
+        <p class="">
+            Here is an example of an application which receive files and convert them to a base64 encoded string.
+        </p>
+      <div class="col-md-10 col-sm-8 col-lg-12">
         <div class="dropzone" style="border: 1px dashed black;" DropZone (onFileDropped)="droppedFiles($event, $event)">
             <article>
                 <strong>{{ message }}</strong> <br><br> 
                 <div *ngIf="hasFile">
-                    <span>Name:  {{ data.name }} </span>
-                    <span>Size:  {{ data.size }} </span>
-                    <span>Type:  {{ data.type }} </span>
+                    <div class="card col-md-2 mr-4 mb-4 ml-4" *ngFor="let item of allFiles; index as idx">
+                      
+                      <span class="item-deletion" (click)="deleteItemFromFiles(idx)">X</span>
+                      <span> <h3>Item</h3> </span>
+                      <span>Name:  {{ item.name }} </span>
+                      <span>Size:  {{ item.size }} </span>
+                      <span>Type:  {{ item.type }} </span>                      
+                    </div>
                 </div>
             </article>
         </div>
       </div>
-      <div class="col-lg-6">
-        <h1 class="display-5 fw-bold lh-1 mb-3">Base64 converter</h1>
-        <p class="">
-            Here is an example of an application which receive files and It convert them to a base64 encoded string.
-        </p>
-        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-          <button type="button" class="btn btn-primary btn-lg px-4 me-md-2" (click)="convertToBase64()">Convert</button>
+      <div class="col-md-10 col-sm-8 col-lg-12">
+        <div class="">
+          <button type="button" class="btn btn-outline-primary btn-lg px-4 me-md-2" (click)="convertToBase64()">Convert</button>
           <button type="button" class="btn btn-outline-secondary btn-lg px-4" (click)="cleanFiles()">Clean</button>
         </div>
       </div>
@@ -26,10 +31,32 @@
 
     <div class="code">
         <h2>Here you are</h2><hr>
-        <div class="container working mt-5" *ngIf="base64 == ''">
-            <mat-progress-spinner mode="indeterminate" />
-            <h2 class="text-center mt-5"> Upload your file </h2>
-        </div>
+
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" #tabla1>          
+          <ng-container matColumnDef="Name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let item"> {{item.filename}} </td>
+          </ng-container>
+          
+          <ng-container matColumnDef="FileSize">
+            <th mat-header-cell *matHeaderCellDef> File size </th>
+            <td mat-cell *matCellDef="let item"> {{item.fileSize}} </td>
+          </ng-container>
+        
+          <ng-container matColumnDef="FileType">
+            <th mat-header-cell *matHeaderCellDef> File type </th>
+            <td mat-cell *matCellDef="let item"> {{item.fileExtension}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="Base64">
+            <th mat-header-cell *matHeaderCellDef> Base64 String </th>
+            <td mat-cell *matCellDef="let item"> <button class="btn btn-secondary" (click)="copyBase64String(item.base64)">Copy</button> </td>
+            </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+          <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
+          </table>
+
         <div *ngIf="base64 != ''" class="base64Container">
             <code  class="code-style">{{ base64 }}</code>
         </div>

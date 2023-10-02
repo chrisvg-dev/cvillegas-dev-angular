@@ -52,6 +52,7 @@ import { LocalStorageService } from './security/jwt/local-storage-service.servic
 import { BusPipelineModule } from './modules/bus-pipeline/bus-pipeline.module';
 import { SliderComponent } from './components/slider/slider.component';
 import { TechnologiesComponent } from './components/technologies/technologies.component';
+import { CustomCrudAppComponent } from './pages/project/custom-crud-app/custom-crud-app.component';
 
 
 @NgModule({
@@ -77,7 +78,8 @@ import { TechnologiesComponent } from './components/technologies/technologies.co
     Base64ConverterComponent,
     LoginComponent,
     SliderComponent,
-    TechnologiesComponent
+    TechnologiesComponent,
+    CustomCrudAppComponent
   ],
   imports: [
     BrowserModule,

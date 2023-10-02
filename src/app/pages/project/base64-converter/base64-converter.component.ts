@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
 import { SpringbootService } from 'src/app/services/springboot.service';
 
@@ -9,51 +11,45 @@ import { SpringbootService } from 'src/app/services/springboot.service';
 })
 export class Base64ConverterComponent {
   allFiles: File[] = [];
-  file!: File;
   hasFile: boolean = false;
-
   defaultMessage: string = 'Drag your file here.';
   message: string = this.defaultMessage;
-
-  data: any = {};
-
   base64: string = '';
+
+  columnas: string[] = ['Name', 'FileSize', 'FileType', 'Base64'];
+  dataSource:any;
+  @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
+
 
   constructor(private springBootService: SpringbootService, private toastr: ToastrService) {}
 
+  deleteItemFromFiles(idx: number) {
+    this.allFiles.splice(idx, 1);
+    this.toastr.success( 'Item was removed...', 'File deletion' );
+  }
 
-  droppedFiles(allFiles: File[], event: any): void {
-    const filesAmount = allFiles.length;
-    console.log(filesAmount)
 
-    if (this.allFiles.length > 0) {
-      this.toastr.error('No puedes agregar mas archivos');
+  droppedFiles(files: File[], event: any): void {
+    const filesAmount = files.length;
+    if ((this.allFiles.length + filesAmount) > 7) {
+      this.toastr.error('No puedes agregar mas de 5 archivos');
       return;
     }
 
-    if (filesAmount > 1) {
-      this.toastr.error('You can not add more than one file.');
-      return;
-    }
-
-    this.file = allFiles[0];
+    this.allFiles.push(...files);
     this.hasFile = true;
 
-    this.allFiles.push(this.file);   
-    console.log( 'Cantidad: ' + this.allFiles.length );
-    this.message = 'You added a new file with this properties: ';
-    this.data = {
-      name: this.file.name,
-      size: this.file.size,
-      type: this.file.type
-    }
+    console.log(this.allFiles);
   }
 
   cleanFiles() {
     this.allFiles = [];
-    this.data = {};
     this.hasFile = false;
     this.toastr.success('All of files were deleted', 'File deletion');
+  }
+
+  copyBase64String(base64: string) {
+    this.base64 = base64;
   }
 
   convertToBase64() {
@@ -63,13 +59,16 @@ export class Base64ConverterComponent {
     }
 
     let formData = new FormData();
-    formData.append('file', this.file);
+    
+    this.allFiles.forEach ((file) => {
+      formData.append('file[]', file);
+    });
 
     this.springBootService.convertToBase64(formData).subscribe({
       next: (resp) => {
         const data = resp as any;
-        console.log(data.message);
-        this.base64 = data.message;
+        this.dataSource = new MatTableDataSource(data.base64);
+        this.dataSource.paginator = this.paginator;
       },
       error: (err) => {
         throw new Error(err);
