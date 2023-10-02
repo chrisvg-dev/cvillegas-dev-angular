@@ -15,7 +15,10 @@ export class SugestionsComponent implements OnInit {
   ngOnInit(): void {
     this.http.findProjects().subscribe(
       {
-        next: resp => this.data = resp
+        next: resp => {
+          console.log(resp)
+          this.data = resp
+        }
       }
     );
   }

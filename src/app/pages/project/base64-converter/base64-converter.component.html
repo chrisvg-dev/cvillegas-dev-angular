@@ -1,4 +1,6 @@
+
 <div class="container px-4 py-5">
+  <back-to-list></back-to-list>
     <div class="row align-items-center py-5">
       <h1 class="display-5 fw-bold lh-1 mb-3">Base64 converter</h1>
         <p class="">
@@ -9,7 +11,7 @@
             <article>
                 <strong>{{ message }}</strong> <br><br> 
                 <div *ngIf="hasFile">
-                    <div class="card col-md-2 mr-4 mb-4 ml-4" *ngFor="let item of allFiles; index as idx">
+                    <div class="card col-sm-6 col-md-4 col-lg-2 mr-4 mb-4 ml-4" *ngFor="let item of allFiles; index as idx">
                       
                       <span class="item-deletion" (click)="deleteItemFromFiles(idx)">X</span>
                       <span> <h3>Item</h3> </span>
@@ -50,7 +52,7 @@
           
             <ng-container matColumnDef="Base64">
             <th mat-header-cell *matHeaderCellDef> Base64 String </th>
-            <td mat-cell *matCellDef="let item"> <button class="btn btn-secondary" (click)="copyBase64String(item.base64)">Copy</button> </td>
+            <td mat-cell *matCellDef="let item"> <button class="btn btn-secondary" (click)="copyBase64String(item.base64)">Show</button> </td>
             </ng-container>
 
           <tr mat-header-row *matHeaderRowDef="columnas"></tr>

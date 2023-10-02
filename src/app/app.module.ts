@@ -53,6 +53,7 @@ import { BusPipelineModule } from './modules/bus-pipeline/bus-pipeline.module';
 import { SliderComponent } from './components/slider/slider.component';
 import { TechnologiesComponent } from './components/technologies/technologies.component';
 import { CustomCrudAppComponent } from './pages/project/custom-crud-app/custom-crud-app.component';
+import { BackToListComponent } from './pages/project/utils/components/back-to-list/back-to-list.component';
 
 
 @NgModule({
@@ -79,7 +80,8 @@ import { CustomCrudAppComponent } from './pages/project/custom-crud-app/custom-c
     LoginComponent,
     SliderComponent,
     TechnologiesComponent,
-    CustomCrudAppComponent
+    CustomCrudAppComponent,
+    BackToListComponent
   ],
   imports: [
     BrowserModule,

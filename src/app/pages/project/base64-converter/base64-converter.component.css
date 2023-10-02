@@ -55,12 +55,15 @@
 
   .dropzone {
     width: 100%; 
-    height: auto;
+    min-height: 200px;
     font-size: 20px;;
     color: gray;
     margin-bottom: 2em;
     padding: 1em;
     cursor: pointer;
+    text-align: center;display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .item-deletion {
@@ -79,9 +82,12 @@
 
   .card {
     display: inline-block;
+    width: 200px;
     padding: 5px;
     font-size: 14px;
     background-color: #f3f3f3;
+    vertical-align: top;
+    text-align: justify;
   }
   
   span {

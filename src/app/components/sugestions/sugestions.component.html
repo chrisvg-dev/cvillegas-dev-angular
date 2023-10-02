@@ -1,17 +1,27 @@
-<div class="my-3 p-3 bg-body rounded shadow-sm">
-  <h6 class="border-bottom pb-2 mb-0"></h6>
-  
-  <div class="container projects">
-    <div class="card col-md-3" *ngFor="let project of data">
-      <a class="generic_link" routerLink="{{ project.component }}">
-        <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-          <div class="card-style">
-            <mat-icon class="icon">{{ project.icon }}</mat-icon>
-            <strong class="text-gray-dark">{{ project.title }}</strong>
-          </div>
-        </div>
-      </a>
-    </div>
-  </div>
+<div class="row justify-content-center mt-100 mb-100" style="z-index: 1;">
+  <div class="col-md-8">
 
+    <div class="card">
+      <ul class="list-style-none" *ngFor="let project of data">
+        <a routerLink="{{ project.component }}">
+          <li class="d-flex no-block card-body border-top">
+
+            <i class="fa fa-plus w-30px m-t-5"></i>
+            <div class="text-justify">
+              <a routerLink="{{ project.component }}" class="m-b-0 font-medium p-0" data-abc="true">{{ project.title }}</a>
+              <span class="text-muted">{{ project.description }}</span>
+            </div>
+            <div class="ml-auto">
+              <div class="tetx-right">
+                <h5 class="text-muted m-b-0">19</h5>
+                <span class="text-muted font-16">APR</span>
+              </div>
+            </div>
+
+          </li>
+        </a>
+      </ul>
+    </div>
+
+  </div>
 </div>

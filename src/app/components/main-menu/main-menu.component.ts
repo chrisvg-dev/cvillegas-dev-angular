@@ -30,7 +30,7 @@ export class MainMenuComponent implements OnInit {
   }
   
   openLoginDialog() {
-    const courseDialog = this.dialog.open(LoginComponent, { width: '700px', height: '250px' });
+    const courseDialog = this.dialog.open(LoginComponent, { width: '600px', height: '450px' });
     courseDialog.afterClosed().subscribe((res) => {
       console.log({ res });
       this.isLogged = this.authService.isLogged();

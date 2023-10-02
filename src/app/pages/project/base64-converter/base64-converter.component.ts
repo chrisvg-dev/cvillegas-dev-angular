@@ -12,7 +12,7 @@ import { SpringbootService } from 'src/app/services/springboot.service';
 export class Base64ConverterComponent {
   allFiles: File[] = [];
   hasFile: boolean = false;
-  defaultMessage: string = 'Drag your file here.';
+  defaultMessage: string = 'Drag your files here.';
   message: string = this.defaultMessage;
   base64: string = '';
 
@@ -71,6 +71,7 @@ export class Base64ConverterComponent {
         this.dataSource.paginator = this.paginator;
       },
       error: (err) => {
+        console.error(err)
         throw new Error(err);
       }
     });

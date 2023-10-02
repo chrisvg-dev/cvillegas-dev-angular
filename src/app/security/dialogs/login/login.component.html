@@ -1,23 +1,48 @@
 <mat-toolbar color="primary">
-    <div class="">        
-        <span><button mat-button mat-stroked-button color="basic" (click)="closeDialog()">Close</button> &nbsp; Log in</span>
+    <div class="">
+        <span><button mat-button mat-stroked-button color="basic" (click)="closeDialog()">Close</button> &nbsp; Log
+            in</span>
         <span class="example-spacer"></span>
     </div>
 </mat-toolbar>
+
 <div class="mt-4">
-	<div class="container col-md-10">
-        <div class="card-body">
-            <form [formGroup]="loginForm" (submit)="onSubmit()">
-                <div class="form-group mb-1">
-                    <input class="form-control" formControlName="email" type="text" id="email" name="email" placeholder="Email">
+    <div class="container col-md-10">
+        <form [formGroup]="loginForm" (submit)="onSubmit()">
+            <div class="form-group">
+                <div class="form-group mb-3">
+                    <label for="email">Email address</label>
+                    <input class="form-control" formControlName="email" type="text" id="email" name="email" placeholder="mail@domain.com">
                 </div>
-                <div class="form-group mb-1">
-                    <input class="form-control" formControlName="password" type="password" id="password" name="password" placeholder="Password">
-                </div>   
-                <div class="mt-4">
-                    <button [disabled]="!loginForm.valid" type="submit" mat-button mat-raised-button color="primary">Save</button> &nbsp;
+            </div>
+            <div class="form-group mb-1">
+                <label for="password">Password</label>
+                <input class="form-control" formControlName="password" type="password" id="password" name="password" placeholder="**********">
+            </div>
+            <!--<div class="form-group">
+                <p class="text-center">By signing up you accept our <a href="#">Terms Of Use</a></p>
+            </div>-->
+            <div class="mt-4">
+                <button [disabled]="!loginForm.valid" type="submit" mat-button mat-raised-button color="primary">Log
+                    In</button> &nbsp;
+            </div>
+            <div class="col-md-12 ">
+                <div class="login-or">
+                    <hr class="hr-or">
+                    <span class="span-or">or</span>
                 </div>
-            </form>
-        </div>
+            </div>
+            <div class="col-md-12 mb-3">
+                <p class="text-center">
+                    <a href="javascript:void();" class="google btn mybtn"><i class="fa fa-google-plus">
+                        </i> Signup using Google
+                    </a>
+                </p>
+            </div>
+            <div class="form-group">
+                <p class="text-center">Don't have account? <a href="#" id="signup">Sign up here</a></p>
+            </div>
+        </form>
+
     </div>
 </div>
