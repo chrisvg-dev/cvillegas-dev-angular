@@ -8,6 +8,7 @@
     align-items: center;
     justify-content: center;
     display: grid;
+    z-index: 999;
 }
 
 .loading-spinner img{
