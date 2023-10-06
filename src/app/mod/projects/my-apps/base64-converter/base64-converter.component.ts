@@ -20,7 +20,6 @@ export class Base64ConverterComponent {
   dataSource:any;
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
 
-
   constructor(private springBootService: SpringbootService, private toastr: ToastrService) {}
 
   deleteItemFromFiles(idx: number) {
@@ -29,7 +28,8 @@ export class Base64ConverterComponent {
   }
 
 
-  droppedFiles(files: File[], event: any): void {
+  droppedFiles(event: any): void {
+    const files: File[] = event.dataTransfer?.files;
     const filesAmount = files.length;
     if ((this.allFiles.length + filesAmount) > 7) {
       this.toastr.error('No puedes agregar mas de 5 archivos');

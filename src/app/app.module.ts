@@ -15,7 +15,6 @@ import { PokeapiComponent } from './pages/pokeapi/pokeapi.component';
 import { SpringbootSimpleCrudComponent } from './pages/springboot-simple-crud/springboot-simple-crud.component';
 
 import { MonthlyPaymentsComponent } from './pages/monthly-payments/monthly-payments.component';
-import { MyCoursesComponent } from './pages/my-courses/my-courses.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatTableModule } from '@angular/material/table';
@@ -45,16 +44,13 @@ import { LoaderInterceptor } from './interceptors/loader-interceptor.service';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { LearningComponent } from './pages/learning/learning.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
-import { Base64ConverterComponent } from './pages/project/base64-converter/base64-converter.component';
 import { LoginComponent } from './security/dialogs/login/login.component';
 import { UniversalAppInterceptor } from './security/jwt/universal-app-interceptor.service';
 import { LocalStorageService } from './security/jwt/local-storage-service.service';
 import { BusPipelineModule } from './modules/bus-pipeline/bus-pipeline.module';
 import { SliderComponent } from './components/slider/slider.component';
 import { TechnologiesComponent } from './components/technologies/technologies.component';
-import { CustomCrudAppComponent } from './pages/project/custom-crud-app/custom-crud-app.component';
-import { BackToListComponent } from './pages/project/utils/components/back-to-list/back-to-list.component';
-
+import { ProjectsModule } from './mod/projects/projects.module';
 
 @NgModule({
   declarations: [
@@ -68,7 +64,6 @@ import { BackToListComponent } from './pages/project/utils/components/back-to-li
     PokeapiComponent,
     SpringbootSimpleCrudComponent,
     MonthlyPaymentsComponent,
-    MyCoursesComponent,
     CertificateComponent,
     CoursesComponent,
     NotificationComponent,
@@ -76,20 +71,16 @@ import { BackToListComponent } from './pages/project/utils/components/back-to-li
     MyLoaderComponent,
     LearningComponent,
     ProjectsComponent,
-    Base64ConverterComponent,
     LoginComponent,
     SliderComponent,
-    TechnologiesComponent,
-    CustomCrudAppComponent,
-    BackToListComponent
-  ],
+    TechnologiesComponent  ],
   imports: [
     BrowserModule,
     AppRoutingModule, 
     HttpClientModule, BrowserAnimationsModule,
     MatTableModule, FormsModule, MatInputModule, MatButtonModule,
     MatDialogModule, MatPaginatorModule, ReactiveFormsModule, MatIconModule, MatToolbarModule, ToastrModule.forRoot(),
-    MatTreeModule, MatProgressSpinnerModule, BusPipelineModule
+    MatTreeModule, MatProgressSpinnerModule, BusPipelineModule, ProjectsModule
   ],
   providers: [
     LoaderService,

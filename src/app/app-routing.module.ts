@@ -6,13 +6,10 @@ import { GithubComponent } from './pages/github/github.component';
 import { PokeapiComponent } from './pages/pokeapi/pokeapi.component';
 import { SpringbootSimpleCrudComponent } from './pages/springboot-simple-crud/springboot-simple-crud.component';
 import { MonthlyPaymentsComponent } from './pages/monthly-payments/monthly-payments.component';
-import { MyCoursesComponent } from './pages/my-courses/my-courses.component';
 import { LearningComponent } from './pages/learning/learning.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
-import { Base64ConverterComponent } from './pages/project/base64-converter/base64-converter.component';
 import { AuthorizeGuard } from './security/jwt/authorize-guard.service';
 import { BusPipelineRoutingModule } from './modules/bus-pipeline/arkon-routing.module';
-import { CustomCrudAppComponent } from './pages/project/custom-crud-app/custom-crud-app.component';
 
 
 
@@ -40,23 +37,17 @@ const routes: Routes = [
     path: 'monthly-payments', component: MonthlyPaymentsComponent
   },
   {
-    path: 'my-courses', component: MyCoursesComponent
-  },
-  {
     path: 'my-learning', component: LearningComponent
   },
   {
     path: 'my-projects', component: ProjectsComponent
   },
   {
-    path: 'base64Converter', component: Base64ConverterComponent,
-  },
-  {
-    path: 'custom-crud-app', component: CustomCrudAppComponent,
-  },
-  {
     path: '', component: HomeComponent, pathMatch: 'full'
   },
+
+  { path: 'projects', loadChildren: () => import('./mod/projects/projects-routing.module').then(m => m.ProjectsRoutingModule) },
+
   // Aqui van los proyectos
   {
     path: '**', redirectTo: ''
