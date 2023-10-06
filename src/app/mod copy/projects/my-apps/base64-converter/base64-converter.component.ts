@@ -28,9 +28,9 @@ export class Base64ConverterComponent {
   }
 
 
-  droppedFiles(files: File[], event: any): void {
+  droppedFiles(event: any): void {
+    const files: File[] = event.dataTransfer?.files;
     const filesAmount = files.length;
-
     if ((this.allFiles.length + filesAmount) > 7) {
       this.toastr.error('No puedes agregar mas de 5 archivos');
       return;

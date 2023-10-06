@@ -34,7 +34,6 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { NotificationComponent } from './components/dialogs/notification/notification.component';
 
 import { ToastrModule } from 'ngx-toastr';
-import { DropzoneDirective } from './dropzone.directive';
 
 import {MatTreeFlatDataSource, MatTreeFlattener, MatTreeModule} from '@angular/material/tree';
 import { MyLoaderComponent } from './components/my-loader/my-loader.component';
@@ -67,7 +66,6 @@ import { ProjectsModule } from './mod/projects/projects.module';
     CertificateComponent,
     CoursesComponent,
     NotificationComponent,
-    DropzoneDirective,
     MyLoaderComponent,
     LearningComponent,
     ProjectsComponent,

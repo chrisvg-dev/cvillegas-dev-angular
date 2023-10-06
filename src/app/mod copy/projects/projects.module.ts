@@ -19,17 +19,12 @@ import { Base64ConverterComponent } from './my-apps/base64-converter/base64-conv
 import { CustomCrudAppComponent } from './my-apps/custom-crud-app/custom-crud-app.component';
 import { MyCoursesComponent } from './my-apps/my-courses/my-courses.component';
 
-import { DropzoneDirective } from './dropzone.directive';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 
 @NgModule({
-  declarations: [ TasksComponent, Base64ConverterComponent, BackToListComponent, CustomCrudAppComponent, MyCoursesComponent, DropzoneDirective ],
+  declarations: [ TasksComponent, Base64ConverterComponent, BackToListComponent, CustomCrudAppComponent, MyCoursesComponent ],
   imports: [
     CommonModule,
     ProjectsRoutingModule,
-    BrowserModule, BrowserAnimationsModule,
     MatTableModule, FormsModule, MatInputModule, MatButtonModule,
     MatDialogModule, MatPaginatorModule, ReactiveFormsModule, MatIconModule, MatToolbarModule, ToastrModule.forRoot(),
     MatTreeModule, MatProgressSpinnerModule

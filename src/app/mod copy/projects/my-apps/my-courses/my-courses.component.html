@@ -1,0 +1,73 @@
+<div class="container">
+	<back-to-list></back-to-list>
+
+	<div class="mt-4">
+		<h1 class="text-center">My learning path</h1>
+	</div>
+	
+	<div class="row">
+		<form class="col-md-4" (submit)="loadCertificatesByCriteria(filter.value)">
+			<input type="text" class="form-control" placeholder="Find by technology" #filter>
+		</form>
+	
+		<div class="offset-md-6 col-md-2" [hidden]="!isLogged">
+			<button mat-raised-button color="primary" (click)="openRegisterCourseDialog()">Add new</button>
+		</div>
+	</div>
+	
+	
+	
+	<div class="courses-container">
+		<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" #tabla1>
+			<ng-container matColumnDef="Id">
+			  <th mat-header-cell *matHeaderCellDef> Id </th>
+			  <td mat-cell *matCellDef="let articulo"> # </td>
+			</ng-container>
+		  
+			<ng-container matColumnDef="Name">
+			  <th mat-header-cell *matHeaderCellDef> Name </th>
+			  <td mat-cell *matCellDef="let articulo"> {{articulo.name}} </td>
+			</ng-container>
+		  
+			<ng-container matColumnDef="Description">
+			  <th mat-header-cell *matHeaderCellDef> Description </th>
+			  <td mat-cell *matCellDef="let articulo"> {{articulo.description}} </td>
+			</ng-container>
+		
+			<ng-container matColumnDef="Language">
+				<th mat-header-cell *matHeaderCellDef> Technology </th>
+				<td mat-cell *matCellDef="let articulo"> {{articulo.language}} </td>
+			  </ng-container>
+			
+			  <ng-container matColumnDef="Type">
+				<th mat-header-cell *matHeaderCellDef> Type </th>
+				<td mat-cell *matCellDef="let articulo"> {{articulo.type}} </td>
+			  </ng-container>
+			
+			  <ng-container matColumnDef="Platform">
+				<th mat-header-cell *matHeaderCellDef> Platform </th>
+				<td mat-cell *matCellDef="let articulo"> {{articulo.platform}} </td>
+			  </ng-container>
+		  
+			<ng-container matColumnDef="Options">
+			  <th mat-header-cell *matHeaderCellDef> Options </th>
+			  <td mat-cell *matCellDef="let articulo">
+				<button mat-mini-fab color="primary" aria-label="Example icon button with a delete icon" (click)="openCompDialog(articulo.id)">
+					<mat-icon>slideshow</mat-icon>
+				</button> &nbsp;
+	
+				<button mat-mini-fab color="warn" aria-label="Example icon button with a delete icon" (click)="deleteCourseById(articulo.id)" [hidden]="!isLogged">
+					<mat-icon>delete</mat-icon>
+				</button>
+	
+				
+			  </td>
+			</ng-container>
+		  
+			<tr mat-header-row *matHeaderRowDef="columnas"></tr>
+			<tr mat-row *matRowDef="let row; columns: columnas;"></tr>
+		  </table>
+	</div>
+	<mat-paginator [pageSizeOptions]="pageSize" showFirstLastButtons></mat-paginator>
+	
+</div>

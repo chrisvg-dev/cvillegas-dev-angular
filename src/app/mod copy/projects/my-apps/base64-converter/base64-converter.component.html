@@ -7,7 +7,7 @@
             Here is an example of an application which receive files and convert them to a base64 encoded string.
         </p>
       <div class="col-md-10 col-sm-8 col-lg-12">
-        <div class="dropzone" style="border: 1px dashed black;" DropZone (onFileDropped)="droppedFiles($event, $event)">
+        <div class="dropzone" style="border: 1px dashed black;" DropZone (onFileDropped)="droppedFiles($event)">
             <article>
                 <strong>{{ message }}</strong> <br><br> 
                 <div *ngIf="hasFile">
