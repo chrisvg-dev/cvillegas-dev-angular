@@ -13,6 +13,8 @@ export class ContactComponent {
   fromPage!: string;
   fromDialog!: string;
 
+  loading: boolean = false;
+
   constructor( public dialogRef: MatDialogRef<ContactComponent>, private springService: SpringbootService, private toastr: ToastrService ) {}
 
   closeDialog() { 
@@ -20,6 +22,7 @@ export class ContactComponent {
   }
 
   sendMessage(message: string) {
+    this.loading = true;
     this.springService.sendMessage( message, "Notification from cvillegas-dev.com" )
       .subscribe({
         next: (resp: any) => {
@@ -30,7 +33,10 @@ export class ContactComponent {
             this.toastr.error( resp.message )
           }
         },
-        error: err => console.error( err )
+        error: err => {
+          console.error( err )
+        },
+        complete: () => this.loading = false
       });
   }
 }
