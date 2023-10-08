@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BootstrapsIconsComponent } from './components/svg/bootstraps-icons/bootstraps-icons.component';
 import { MainMenuComponent } from './components/main-menu/main-menu.component';
-import { SugestionsComponent } from './components/sugestions/sugestions.component';
+import { SugestionsComponent } from './mod/projects/my-apps/sugestions/sugestions.component';
 import { HelloWorldComponent } from './pages/hello-world/hello-world.component';
 import { HomeComponent } from './pages/home/home.component';
 
@@ -42,7 +42,6 @@ import { LoaderInterceptor } from './interceptors/loader-interceptor.service';
 
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { LearningComponent } from './pages/learning/learning.component';
-import { ProjectsComponent } from './pages/projects/projects.component';
 import { LoginComponent } from './security/dialogs/login/login.component';
 import { UniversalAppInterceptor } from './security/jwt/universal-app-interceptor.service';
 import { LocalStorageService } from './security/jwt/local-storage-service.service';
@@ -57,7 +56,6 @@ import { ContactComponent } from './components/dialogs/contact/contact.component
     AppComponent,
     BootstrapsIconsComponent,
     MainMenuComponent,
-    SugestionsComponent,
     HelloWorldComponent,
     HomeComponent,
     GithubComponent,
@@ -69,7 +67,6 @@ import { ContactComponent } from './components/dialogs/contact/contact.component
     NotificationComponent,
     MyLoaderComponent,
     LearningComponent,
-    ProjectsComponent,
     LoginComponent,
     SliderComponent,
     TechnologiesComponent,

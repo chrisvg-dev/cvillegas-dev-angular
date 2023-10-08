@@ -22,10 +22,12 @@ import { MyCoursesComponent } from './my-apps/my-courses/my-courses.component';
 import { DropzoneDirective } from './dropzone.directive';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ProjectsComponent } from 'src/app/mod/projects/my-apps/projects/projects.component';
+import { SugestionsComponent } from './my-apps/sugestions/sugestions.component';
 
 
 @NgModule({
-  declarations: [ TasksComponent, Base64ConverterComponent, BackToListComponent, CustomCrudAppComponent, MyCoursesComponent, DropzoneDirective ],
+  declarations: [ TasksComponent, Base64ConverterComponent, BackToListComponent, CustomCrudAppComponent, MyCoursesComponent, DropzoneDirective, ProjectsComponent, SugestionsComponent ],
   imports: [
     CommonModule,
     ProjectsRoutingModule,

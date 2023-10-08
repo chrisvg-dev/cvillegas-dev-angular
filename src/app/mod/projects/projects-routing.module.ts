@@ -4,8 +4,10 @@ import { TasksComponent } from './my-apps/tasks/tasks.component';
 import { Base64ConverterComponent } from './my-apps/base64-converter/base64-converter.component';
 import { CustomCrudAppComponent } from './my-apps/custom-crud-app/custom-crud-app.component';
 import { MyCoursesComponent } from './my-apps/my-courses/my-courses.component';
+import { ProjectsComponent } from 'src/app/mod/projects/my-apps/projects/projects.component';
 
 const routes: Routes = [
+  { path: '', component: ProjectsComponent },
   { path: 'tasks', component: TasksComponent },
   { path: 'base64Converter', component: Base64ConverterComponent },  
   { path: 'custom-crud-app', component: CustomCrudAppComponent  },

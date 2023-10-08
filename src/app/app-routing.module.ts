@@ -7,8 +7,6 @@ import { PokeapiComponent } from './pages/pokeapi/pokeapi.component';
 import { SpringbootSimpleCrudComponent } from './pages/springboot-simple-crud/springboot-simple-crud.component';
 import { MonthlyPaymentsComponent } from './pages/monthly-payments/monthly-payments.component';
 import { LearningComponent } from './pages/learning/learning.component';
-import { ProjectsComponent } from './pages/projects/projects.component';
-import { AuthorizeGuard } from './security/jwt/authorize-guard.service';
 import { BusPipelineRoutingModule } from './modules/bus-pipeline/arkon-routing.module';
 
 
@@ -38,9 +36,6 @@ const routes: Routes = [
   },
   {
     path: 'my-learning', component: LearningComponent
-  },
-  {
-    path: 'my-projects', component: ProjectsComponent
   },
   {
     path: '', component: HomeComponent, pathMatch: 'full'
