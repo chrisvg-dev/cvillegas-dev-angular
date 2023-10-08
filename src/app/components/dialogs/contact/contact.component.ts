@@ -25,6 +25,7 @@ export class ContactComponent {
         next: (resp: any) => {
           if ( resp.code === 'OK' ) {
             this.toastr.success( resp.message )
+            this.closeDialog()
           } else {
             this.toastr.error( resp.message )
           }
