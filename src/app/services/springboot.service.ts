@@ -66,6 +66,6 @@ export class SpringbootService {
   }
 
   sendMessage(text: string, subject: string) {
-    return this.http.post(`${URL}/apps/base64Converter`, { subject, text });
+    return this.http.post(`${URL}/info/sendBasicEmail`, { subject, text });
   }
 }
