@@ -64,4 +64,8 @@ export class SpringbootService {
   convertToBase64(formData: FormData) {
     return this.http.post( `${URL}/apps/base64Converter`, formData);
   }
+
+  sendMessage(text: string, subject: string) {
+    return this.http.post(`${URL}/apps/base64Converter`, { subject, text });
+  }
 }

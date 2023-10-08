@@ -50,6 +50,7 @@ import { BusPipelineModule } from './modules/bus-pipeline/bus-pipeline.module';
 import { SliderComponent } from './components/slider/slider.component';
 import { TechnologiesComponent } from './components/technologies/technologies.component';
 import { ProjectsModule } from './mod/projects/projects.module';
+import { ContactComponent } from './components/dialogs/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { ProjectsModule } from './mod/projects/projects.module';
     ProjectsComponent,
     LoginComponent,
     SliderComponent,
-    TechnologiesComponent  ],
+    TechnologiesComponent,
+    ContactComponent  ],
   imports: [
     BrowserModule,
     AppRoutingModule, 

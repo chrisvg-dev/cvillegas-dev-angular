@@ -1,0 +1,16 @@
+<mat-toolbar color="primary">
+    <div class="container">        
+        <span><button mat-button mat-stroked-button color="basic" (click)="closeDialog()">Close</button> &nbsp; Contact me</span>
+        <span class="example-spacer"></span>
+    </div>
+</mat-toolbar>
+<div class="container">
+    <div class="py-2 px-2">
+        <div class="">
+            <form (submit)="sendMessage(message.value)">
+                <textarea rows="13" cols="4" type="text" class="form-control mb-2" placeholder="Write me something..." #message></textarea>
+                <button type="submit" mat-flat-button color="primary" href="https://github.com/chrisvg-dev" target="_blank"> <mat-icon>mail</mat-icon> Send</button>
+            </form>
+        </div>
+    </div>
+</div>

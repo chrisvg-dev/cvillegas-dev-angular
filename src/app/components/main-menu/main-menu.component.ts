@@ -6,6 +6,7 @@ import { LocalStorageService } from 'src/app/security/jwt/local-storage-service.
 import { LocalAuthenticationService } from 'src/app/services/auth/local-authentication.service';
 import { SpringbootService } from 'src/app/services/springboot.service';
 import { RouterUtilsService } from 'src/app/utils/router-utils.service';
+import { ContactComponent } from '../dialogs/contact/contact.component';
 
 @Component({
   selector: 'app-main-menu',
@@ -35,6 +36,13 @@ export class MainMenuComponent implements OnInit {
       console.log({ res });
       this.isLogged = this.authService.isLogged();
     });
+  }
+
+  openContactDialog() {
+    const contactDialog = this.dialog.open(ContactComponent, { width: '600px', height: '450px' });
+    contactDialog.afterClosed().subscribe( (res) => {
+      console.log('Closing contact dialog');
+    } );
   }
 
   logOut() {
