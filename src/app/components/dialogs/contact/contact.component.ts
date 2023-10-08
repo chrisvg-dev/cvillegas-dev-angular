@@ -22,7 +22,13 @@ export class ContactComponent {
   sendMessage(message: string) {
     this.springService.sendMessage( message, "Notification from cvillegas-dev.com" )
       .subscribe({
-        next: resp => this.toastr.success( JSON.stringify(resp) ),
+        next: (resp: any) => {
+          if ( resp.code === 'OK' ) {
+            this.toastr.success( resp.message )
+          } else {
+            this.toastr.error( resp.message )
+          }
+        },
         error: err => console.error( err )
       });
   }

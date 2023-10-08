@@ -39,7 +39,7 @@ export class MainMenuComponent implements OnInit {
   }
 
   openContactDialog() {
-    const contactDialog = this.dialog.open(ContactComponent, { width: '600px', height: '450px' });
+    const contactDialog = this.dialog.open(ContactComponent, { width: '600px', height: '310px' });
     contactDialog.afterClosed().subscribe( (res) => {
       console.log('Closing contact dialog');
     } );
