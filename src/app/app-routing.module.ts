@@ -7,18 +7,11 @@ import { PokeapiComponent } from './pages/pokeapi/pokeapi.component';
 import { SpringbootSimpleCrudComponent } from './pages/springboot-simple-crud/springboot-simple-crud.component';
 import { MonthlyPaymentsComponent } from './pages/monthly-payments/monthly-payments.component';
 import { LearningComponent } from './pages/learning/learning.component';
-import { BusPipelineRoutingModule } from './modules/bus-pipeline/arkon-routing.module';
 
 
 
 const routes: Routes = [
   // Modules
-
-  {
-    path: 'arkon', // This will be the route where the new module will be loaded
-    loadChildren: () => import('./modules/bus-pipeline/bus-pipeline.module').then(m => m.BusPipelineModule)
-  },
-
   {
     path: 'hello-world', component: HelloWorldComponent, pathMatch: 'full'
   },
@@ -52,7 +45,6 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { useHash: true }),
-    BusPipelineRoutingModule 
   ],
   exports: [RouterModule]
 })
