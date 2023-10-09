@@ -45,7 +45,6 @@ import { LearningComponent } from './pages/learning/learning.component';
 import { LoginComponent } from './security/dialogs/login/login.component';
 import { UniversalAppInterceptor } from './security/jwt/universal-app-interceptor.service';
 import { LocalStorageService } from './security/jwt/local-storage-service.service';
-import { BusPipelineModule } from './modules/bus-pipeline/bus-pipeline.module';
 import { SliderComponent } from './components/slider/slider.component';
 import { TechnologiesComponent } from './components/technologies/technologies.component';
 import { ProjectsModule } from './mod/projects/projects.module';
@@ -75,9 +74,9 @@ import { ContactComponent } from './components/dialogs/contact/contact.component
     BrowserModule,
     AppRoutingModule, 
     HttpClientModule, BrowserAnimationsModule,
-    MatTableModule, FormsModule, MatInputModule, MatButtonModule,
-    MatDialogModule, MatPaginatorModule, ReactiveFormsModule, MatIconModule, MatToolbarModule, ToastrModule.forRoot(),
-    MatTreeModule, MatProgressSpinnerModule, BusPipelineModule, ProjectsModule
+    MatTableModule, MatInputModule, MatButtonModule,
+    MatDialogModule, MatPaginatorModule, MatIconModule, MatToolbarModule, ToastrModule.forRoot(),
+    MatTreeModule, MatProgressSpinnerModule, ProjectsModule, FormsModule, ReactiveFormsModule
   ],
   providers: [
     LoaderService,
