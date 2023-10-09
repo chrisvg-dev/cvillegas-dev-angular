@@ -3,6 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { SpringbootService } from 'src/app/services/springboot.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { LocalAuthenticationService } from 'src/app/services/auth/local-authentication.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ProjectFormComponent } from '../dialog/project-form/project-form.component';
 
 @Component({
   selector: 'projects',
@@ -16,9 +19,12 @@ export class SugestionsComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
   dataSource:any;
 
-  constructor(private http: SpringbootService){}
+  isLogged: boolean = false;
+
+  constructor(private http: SpringbootService, private authService: LocalAuthenticationService, public dialog: MatDialog){}
   
   ngOnInit(): void {
+    this.isLogged = this.authService.isLogged();
     this.http.findProjects().subscribe(
       {
         next: resp => {
@@ -29,6 +35,13 @@ export class SugestionsComponent implements OnInit {
         }
       }
     );
+  }
+
+  openRegisterProjectDialog() {
+    const courseDialog = this.dialog.open(ProjectFormComponent, { width: '600px' });
+    courseDialog.afterClosed().subscribe((res) => {
+      console.log({ res });
+    });
   }
 
 } 

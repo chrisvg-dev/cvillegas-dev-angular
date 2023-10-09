@@ -27,7 +27,11 @@ export class SpringbootService {
 
   // Data Projects
   findProjects()  {
-    return this.http.get(`${URL}/data/projects`, {withCredentials: true})
+    return this.http.get(`${URL}/utils/projects`, {withCredentials: true})
+  }
+
+  saveProject( project: Project)  {
+    return this.http.post(`${URL}/utils/add-project`, project, { withCredentials: true})
   }
 
   findTechSkill()  {

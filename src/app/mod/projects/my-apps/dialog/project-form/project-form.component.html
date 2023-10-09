@@ -1,0 +1,23 @@
+<mat-toolbar color="primary">
+    <div class="container">        
+        <span><button mat-button mat-stroked-button color="basic" (click)="closeDialog()">Close</button> &nbsp; Add New Project</span>
+        <span class="example-spacer"></span>
+    </div>
+</mat-toolbar>
+<div class="container">
+    <form class="px-2 py-2" [formGroup]="projectForm" (submit)="submitForm()">
+        <input formControlName="title" type="text" class="form-control" id="name" placeholder="A new course name">
+        <textarea formControlName="description" class="form-control" placeholder="Add a description in here" id="description" style="height: 100px"></textarea>
+
+        <div class="form-floating">
+            <select class="form-select" id="difficulty">
+              <option selected value="1">Easy</option>
+              <option value="2">Regular</option>
+              <option value="3">Hard</option>
+            </select>
+            <label for="difficulty">Choose an option:</label>
+        </div>
+        <input formControlName="component" type="text" class="form-control" id="component" placeholder="/component">
+        <button type="submit" mat-flat-button color="primary" target="_blank" [disabled]="!projectForm.valid"> <mat-icon>add</mat-icon>Save</button>
+    </form>
+</div>

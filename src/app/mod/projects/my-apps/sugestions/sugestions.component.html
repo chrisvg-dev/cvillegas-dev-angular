@@ -1,4 +1,8 @@
 <div class="container projects-container">
+  <div class="form-controller mb-3 text-left" [hidden]="!isLogged">
+    <button mat-flat-button color="primary" target="_blank" (click)="openRegisterProjectDialog()"> <mat-icon>add</mat-icon> New project</button>
+  </div>
+
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" #tabla1>
     <ng-container matColumnDef="Id">
       <th mat-header-cell *matHeaderCellDef> Id </th>

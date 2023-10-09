@@ -24,10 +24,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProjectsComponent } from 'src/app/mod/projects/my-apps/projects/projects.component';
 import { SugestionsComponent } from './my-apps/sugestions/sugestions.component';
+import { ProjectFormComponent } from './my-apps/dialog/project-form/project-form.component';
 
 
 @NgModule({
-  declarations: [ TasksComponent, Base64ConverterComponent, BackToListComponent, CustomCrudAppComponent, MyCoursesComponent, DropzoneDirective, ProjectsComponent, SugestionsComponent ],
+  declarations: [ TasksComponent, Base64ConverterComponent, BackToListComponent, CustomCrudAppComponent, MyCoursesComponent, DropzoneDirective, ProjectsComponent, SugestionsComponent, ProjectFormComponent ],
   imports: [
     CommonModule,
     ProjectsRoutingModule,
