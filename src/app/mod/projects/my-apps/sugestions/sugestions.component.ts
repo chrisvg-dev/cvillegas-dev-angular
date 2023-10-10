@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { LocalAuthenticationService } from 'src/app/services/auth/local-authentication.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ProjectFormComponent } from '../dialog/project-form/project-form.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'projects',
@@ -21,10 +22,14 @@ export class SugestionsComponent implements OnInit {
 
   isLogged: boolean = false;
 
-  constructor(private http: SpringbootService, private authService: LocalAuthenticationService, public dialog: MatDialog){}
+  constructor(private http: SpringbootService, private authService: LocalAuthenticationService, public dialog: MatDialog, private toastr: ToastrService){}
   
   ngOnInit(): void {
     this.isLogged = this.authService.isLogged();
+    this.loadProjects();
+  }
+
+  loadProjects() {
     this.http.findProjects().subscribe(
       {
         next: resp => {
@@ -35,6 +40,19 @@ export class SugestionsComponent implements OnInit {
         }
       }
     );
+  }
+  deleteItem(id: number): void {
+    if ( confirm('Are you sure you want to delete this record?') ) {
+      this.http.deleteProject(id).subscribe({
+        next: (resp: any) => {
+          console.log(resp)
+          this.toastr.success(resp.text);
+          this.loadProjects();
+        },
+        error: err => this.toastr.error(err),
+        complete: () => console.log('Course deleted successfully')
+      });
+    }
   }
 
   openRegisterProjectDialog() {

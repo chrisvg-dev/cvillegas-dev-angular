@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output, Type } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
@@ -16,6 +16,7 @@ export class ProjectFormComponent {
   fromDialog!: string;
 
   public projectForm!: FormGroup; 
+  @Output() update = new EventEmitter<boolean>();
 
 
   constructor(public dialogRef: MatDialogRef<ProjectFormComponent>, private springService: SpringbootService, private toastr: ToastrService, private formBuilder: FormBuilder) {}
@@ -26,6 +27,10 @@ export class ProjectFormComponent {
       description: ['', Validators.required],
       component: ['', Validators.required]
    })
+  }
+
+  emit() {
+    this.update.emit(true)
   }
 
   closeDialog() { 

@@ -34,6 +34,10 @@ export class SpringbootService {
     return this.http.post(`${URL}/utils/add-project`, project, { withCredentials: true})
   }
 
+  deleteProject( id: number)  {
+    return this.http.delete(`${URL}/utils/delete-project/${id}`, { withCredentials: true})
+  }
+
   findTechSkill()  {
     return this.http.get(`${URL}/data/tech-skill`, {withCredentials: true})
   }
