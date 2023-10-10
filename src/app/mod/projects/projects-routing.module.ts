@@ -6,6 +6,7 @@ import { CustomCrudAppComponent } from './my-apps/custom-crud-app/custom-crud-ap
 import { MyCoursesComponent } from './my-apps/my-courses/my-courses.component';
 import { ProjectsComponent } from 'src/app/mod/projects/my-apps/projects/projects.component';
 import { RankSystemComponent } from './my-apps/rank-system/rank-system.component';
+import { EmailSenderComponent } from './my-apps/email-sender/email-sender.component';
 
 const routes: Routes = [
   { path: '', component: ProjectsComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'custom-crud-app', component: CustomCrudAppComponent  },
   { path: 'my-courses', component: MyCoursesComponent  },
   { path: 'page-ranking', component: RankSystemComponent  },
+  { path: 'email-sender', component: EmailSenderComponent  },
 ];
 
 @NgModule({

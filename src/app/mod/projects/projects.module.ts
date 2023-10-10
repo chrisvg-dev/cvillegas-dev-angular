@@ -26,10 +26,11 @@ import { ProjectsComponent } from 'src/app/mod/projects/my-apps/projects/project
 import { SugestionsComponent } from './my-apps/sugestions/sugestions.component';
 import { ProjectFormComponent } from './my-apps/dialog/project-form/project-form.component';
 import { RankSystemComponent } from './my-apps/rank-system/rank-system.component';
+import { EmailSenderComponent } from './my-apps/email-sender/email-sender.component';
 
 
 @NgModule({
-  declarations: [ TasksComponent, Base64ConverterComponent, BackToListComponent, CustomCrudAppComponent, MyCoursesComponent, DropzoneDirective, ProjectsComponent, SugestionsComponent, ProjectFormComponent, RankSystemComponent ],
+  declarations: [ TasksComponent, Base64ConverterComponent, BackToListComponent, CustomCrudAppComponent, MyCoursesComponent, DropzoneDirective, ProjectsComponent, SugestionsComponent, ProjectFormComponent, RankSystemComponent, EmailSenderComponent ],
   imports: [
     CommonModule,
     ProjectsRoutingModule,

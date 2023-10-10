@@ -51,8 +51,8 @@ export class ProjectFormComponent {
     this.springService.saveProject(course).subscribe({
       next: resp => {
         let data = resp as any;
-        this.toastr.success(data.message, data.code);
-        if (data.code == 'OK') {
+        this.toastr.success(data.title + 'was successfully saved');
+        if (data.title !== undefined) {
           this.dialogRef.close({ event: 'close', data: resp });
         }
       },
