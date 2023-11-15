@@ -29,6 +29,7 @@ export class DropzoneDirective {
     this.opacity = '1';
     this.border = 'none';
     const files = evt.dataTransfer.files;
+    console.log(files);
     if (files.length > 0) {
       this.onFileDropped.emit(files);
     }

@@ -57,7 +57,9 @@ export class CoursesComponent implements OnInit {
   }
 
   droppedFiles(event: any): void {
-    const allFiles: File[] = event.dataTransfer?.files;
+    const allFiles: FileList = event;
+    console.log(event);
+    console.log('Cantidad: ' + allFiles);
     const filesAmount = allFiles.length;
 
     if (this.allFiles.length > 0) {
