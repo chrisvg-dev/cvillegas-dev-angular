@@ -49,6 +49,7 @@ import { SliderComponent } from './components/slider/slider.component';
 import { TechnologiesComponent } from './components/technologies/technologies.component';
 import { ProjectsModule } from './mod/projects/projects.module';
 import { ContactComponent } from './components/dialogs/contact/contact.component';
+import { DropzoneDirective } from './dropzone.directive';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { ContactComponent } from './components/dialogs/contact/contact.component
     LoginComponent,
     SliderComponent,
     TechnologiesComponent,
-    ContactComponent  ],
+    ContactComponent,
+    DropzoneDirective  ],
   imports: [
     BrowserModule,
     AppRoutingModule, 
