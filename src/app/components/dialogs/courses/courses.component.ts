@@ -117,6 +117,8 @@ export class CoursesComponent implements OnInit {
 
     formData.append('course', new Blob([JSON.stringify(course)], { type: 'application/json' }));
     formData.append('file', this.file);
+    console.log(course);
+    console.log(this.file);
 
     this.springBootService.saveCourse(formData).subscribe({
       next: resp => {
