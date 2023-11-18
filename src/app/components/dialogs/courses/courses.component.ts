@@ -14,6 +14,9 @@ export class CoursesComponent implements OnInit {
 
   fromPage!: string;
   fromDialog!: string;
+  platforms: any[] = [];
+  types: any[] = [];
+  technologies: any[] = [];
 
   defaultUploadMessage: any = 'Drop files here.';
 
@@ -34,21 +37,24 @@ export class CoursesComponent implements OnInit {
     private formBuilder: FormBuilder, 
     public dialogRef: MatDialogRef<CoursesComponent>, 
     private toastr: ToastrService,
-    @Optional() @Inject(MAT_DIALOG_DATA) public data: string) {}
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: any) {}
 
   ngOnInit() {
     this.courseForm = this.formBuilder.group({   
       name: ['', Validators.required],
-      description: ['', Validators.required],
-      language: ['', Validators.required],
-      type: ['', Validators.required],
-      platform: ['', Validators.required],     
+      description: ['', Validators.required], 
+      language: ['', Validators.required], 
+      platform: ['', Validators.required], 
+      type: ['', Validators.required], 
       certificate: ['']
-   })
+    })
 
-   this.fromDialog = "Success";
-   console.log(this.data);
-   
+    this.fromDialog = "Success";
+    console.log(this.data);
+    const wrappedData = this.data;
+    this.platforms = wrappedData.platforms;
+    this.types = wrappedData.types;
+    this.technologies = wrappedData.technologies;
   }
 
   readURL(event:any) {

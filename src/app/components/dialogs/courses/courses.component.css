@@ -9,6 +9,7 @@
 .dropzone {
     border: 1px solid gray;
     background-color: rgb(83, 74, 96);
-    padding: 40px 40px;
+    padding: 10px 10px;
     color: lightgray;
+    height: 150px;;
  }

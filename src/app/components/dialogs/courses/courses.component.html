@@ -14,16 +14,27 @@
                 <div class="form-group mb-1">
                     <input class="form-control" formControlName="description" type="text" id="description" name="description" placeholder="Description">
                 </div>
-                <div class="form-group mb-1">
-                    <input class="form-control" formControlName="language" type="text" id="language" name="language" placeholder="Language">
-                </div>
-                    
-                <div class="form-group mb-1">
-                    <input class="form-control" formControlName="type" type="text" id="type" name="type" placeholder="type">
-                </div>
-                <div class="form-group mb-3">
-                    <input class="form-control" formControlName="platform" type="text" id="platform" name="platform" placeholder="platform">
-                </div>		
+
+                <select name="languages" class="form-control mt-1 mb-1" formControlName="language">
+                    <option selected disabled value="">Select technology</option>
+                    @for (language of technologies; track language) {
+                        <option [value]="language.id">{{language.name}}</option>
+                    }
+                </select>
+
+                <select name="platforms" class="form-control mt-1 mb-1" formControlName="platform">
+                    <option selected disabled value="">Select platform</option>
+                    @for (platform of platforms; track platform) {
+                        <option [value]="platform.id">{{platform.name}}</option>
+                    }
+                </select>
+                <select name="types" class="form-control mt-1 mb-1" formControlName="type">
+                    <option selected disabled value="">Select course type</option>
+                    @for (category of types; track category) {
+                        <option [value]="category.id">{{category.name}}</option>
+                    }
+                </select>
+  
                 <div class="form-group">
                     <div class="dropzone" DropZone (onFileDropped)="droppedFiles($event)">
                         <div class="text-center" *ngIf="hasFile">
@@ -42,4 +53,3 @@
         </div>
     </div>
 </div>
-
