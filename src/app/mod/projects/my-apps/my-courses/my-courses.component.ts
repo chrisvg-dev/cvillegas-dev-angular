@@ -53,7 +53,7 @@ export class MyCoursesComponent implements OnInit {
   }
 
   openRegisterCourseDialog() {
-    const courseDialog = this.dialog.open(CoursesComponent, { width: '700px' });
+    const courseDialog = this.dialog.open(CoursesComponent, { data: this.data, width: '700px' });
     courseDialog.afterClosed().subscribe((res) => {
       console.log({ res });
       this.certificate = null;
@@ -84,11 +84,12 @@ export class MyCoursesComponent implements OnInit {
 
   loadCertificatesByCriteria(criteria: string): any {
     this.springBootService.findMyCourses(criteria).subscribe({
-      next: (data) => {
-        this.data = data;
+      next: (data :any) => {
+        console.log(data);
+        this.data = JSON.parse(JSON.stringify(data));
         this.datos = data;
 
-        this.dataSource = new MatTableDataSource<Course>(this.datos);
+        this.dataSource = new MatTableDataSource<Course>(data.courses);
         this.dataSource.paginator = this.paginator;
       },
       error: error => { throw new Error(error) }    });

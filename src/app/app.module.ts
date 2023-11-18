@@ -51,6 +51,8 @@ import { ProjectsModule } from './mod/projects/projects.module';
 import { ContactComponent } from './components/dialogs/contact/contact.component';
 import { DropzoneDirective } from './dropzone.directive';
 
+import { MatSelectModule } from '@angular/material/select';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -78,7 +80,7 @@ import { DropzoneDirective } from './dropzone.directive';
     HttpClientModule, BrowserAnimationsModule,
     MatTableModule, MatInputModule, MatButtonModule,
     MatDialogModule, MatPaginatorModule, MatIconModule, MatToolbarModule, ToastrModule.forRoot(),
-    MatTreeModule, MatProgressSpinnerModule, ProjectsModule, FormsModule, ReactiveFormsModule
+    MatTreeModule, MatProgressSpinnerModule, ProjectsModule, FormsModule, ReactiveFormsModule, MatSelectModule
   ],
   providers: [
     LoaderService,

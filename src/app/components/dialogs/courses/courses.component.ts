@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, Optional } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { Course } from 'src/app/models/course';
 import { SpringbootService } from 'src/app/services/springboot.service';
@@ -29,7 +29,12 @@ export class CoursesComponent implements OnInit {
 
   validFormats: string = 'image/png, image/jpeg, image/jpg';
 
-  constructor(private springBootService: SpringbootService, private formBuilder: FormBuilder, public dialogRef: MatDialogRef<CoursesComponent>, private toastr: ToastrService) {}
+  constructor(
+    private springBootService: SpringbootService, 
+    private formBuilder: FormBuilder, 
+    public dialogRef: MatDialogRef<CoursesComponent>, 
+    private toastr: ToastrService,
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: string) {}
 
   ngOnInit() {
     this.courseForm = this.formBuilder.group({   
@@ -42,6 +47,8 @@ export class CoursesComponent implements OnInit {
    })
 
    this.fromDialog = "Success";
+   console.log(this.data);
+   
   }
 
   readURL(event:any) {

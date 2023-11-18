@@ -51,7 +51,7 @@ export class SpringbootService {
   }
 
   findMyCourses(criteria: string) {
-    return this.http.get<any[]>(`${URL}/data/my-courses?criteria=` + criteria);
+    return this.http.get<any[]>(`${URL}/data/my-courses`);
   }
 
   findMyCertificate(criteria: number) {
