@@ -60,7 +60,7 @@ export class SpringbootService {
   }
 
   saveCourse(request: FormData) {
-    return this.http.post( `${URL}/data/my-courses/putCertificate`, request);
+    return this.http.post( `${URL}/data/my-courses/putCertificate`, request, { withCredentials: true });
   }
 
   deleteCourse(id: number) {
