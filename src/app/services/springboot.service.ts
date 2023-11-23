@@ -17,12 +17,12 @@ export class SpringbootService {
   // Security
   login(request: any): Observable<any> {
     const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-    return this.http.post<any[]>(`${URL}/auth/login`, request, { headers, withCredentials: true });
+    return this.http.post<any[]>(`${URL}/api/v1/auth/login`, request, { headers, withCredentials: true });
   }
   logOut(): Observable<any> {
     this.storage.set('isLogged', 'false');
     const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-    return this.http.get(`${URL}/auth/logOut`, { headers, withCredentials: true });
+    return this.http.get(`${URL}/api/v1/auth/logOut`, { headers, withCredentials: true });
   }
 
   // Data Projects
@@ -51,7 +51,7 @@ export class SpringbootService {
   }
 
   findMyCourses(criteria: string) {
-    return this.http.get<any[]>(`${URL}/data/my-courses`);
+    return this.http.get<any[]>(`${URL}/data/my-courses`, { withCredentials: true });
   }
 
   findMyCertificate(criteria: number) {

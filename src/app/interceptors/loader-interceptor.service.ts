@@ -6,53 +6,29 @@ import {
   HttpEvent,
   HttpInterceptor
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, finalize } from 'rxjs';
 import { LoaderService } from '../services/loader.service';
 
 @Injectable()
 export class LoaderInterceptor implements HttpInterceptor {
   private requests: HttpRequest<any>[] = [];
+  private countRequest = 0;
 
   constructor(private loaderService: LoaderService) { }
 
-  removeRequest(req: HttpRequest<any>) {
-    const i = this.requests.indexOf(req);
-    if (i >= 0) {
-      this.requests.splice(i, 1);
+  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    if (!this.countRequest) {
+      this.loaderService.isLoading.next(true);
     }
-    this.loaderService.isLoading.next(this.requests.length > 0);
-  }
-
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
-    this.requests.push(req);
-
-    console.log("No of requests--->" + this.requests.length);
-
-    this.loaderService.isLoading.next(true);
-    return Observable.create(observer => {
-      const subscription = next.handle(req)
-        .subscribe(
-          event => {
-            if (event instanceof HttpResponse) {
-              this.removeRequest(req);
-              observer.next(event);
-            }
-          },
-          err => {
-            alert('error' + err);
-            this.removeRequest(req);
-            observer.error(err);
-          },
-          () => {
-            this.removeRequest(req);
-            observer.complete();
-          });
-      // remove request from queue when cancelled
-      return () => {
-        this.removeRequest(req);
-        subscription.unsubscribe();
-      };
-    });
+    this.countRequest++;
+    return next.handle(request)
+      .pipe(
+        finalize(() => {
+          this.countRequest--;
+          if (!this.countRequest) {
+            this.loaderService.isLoading.next(false);
+          }
+        })
+      );
   }
 }

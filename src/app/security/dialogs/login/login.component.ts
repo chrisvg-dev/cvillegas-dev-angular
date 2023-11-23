@@ -37,7 +37,7 @@ export class LoginComponent {
 
   onSubmit () {
     const request = {
-      username: this.loginForm.get('email')!.value,
+      email: this.loginForm.get('email')!.value,
       password: this.loginForm.get('password')!.value,
     }
 
@@ -45,10 +45,6 @@ export class LoginComponent {
       next: resp => {
         console.log(resp);
         const user = resp as any;
-
-        if (user.status == 'BAD_REQUEST') {
-          
-        }
 
         switch( user.status ) {
           case 'OK': 

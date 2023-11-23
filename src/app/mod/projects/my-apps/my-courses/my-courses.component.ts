@@ -92,7 +92,7 @@ export class MyCoursesComponent implements OnInit {
         this.dataSource = new MatTableDataSource<Course>(data.courses);
         this.dataSource.paginator = this.paginator;
       },
-      error: error => { throw new Error(error) }    });
+      error: error => { console.error(error) }    });
   }
 
   deleteCourseById(id: number): any {
