@@ -56,7 +56,7 @@ export class SpringbootService {
 
   findMyCertificate(criteria: number) {
     const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
-    return this.http.get<string>(`${URL}/data/my-courses/getCertificate/${criteria}`, { headers, responseType: 'text' as 'json'});
+    return this.http.get<string>(`${URL}/data/my-courses/getCertificate/${criteria}`, { headers, withCredentials: true , responseType: 'text' as 'json'});
   }
 
   saveCourse(request: FormData) {
