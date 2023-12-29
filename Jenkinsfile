@@ -13,13 +13,13 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'rm -rf /var/www/angular/*'
-                sh 'cp -rp dist/angular/* /var/www/angular'
+                sh 'rm -rf /var/www/html/*'
+                sh 'cp -rp dist/angular/* /var/www/html'
             }
         }
         stage('Restart Server') {
             steps {
-                sh 'sudo service apache2 restart'
+                sh 'sudo service nginx restart'
             }
         }
     }
