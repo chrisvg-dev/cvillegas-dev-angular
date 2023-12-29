@@ -13,8 +13,11 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'rm -rf /var/www/html/*'
-                sh 'cp -rp dist/angular/* /var/www/html'
+                sh '''
+                    sudo chmod 777 -R /var/www/html
+                    rm -rf /var/www/html/*
+                    cp -rp dist/angular/* /var/www/html
+                '''
             }
         }
         stage('Restart Server') {
