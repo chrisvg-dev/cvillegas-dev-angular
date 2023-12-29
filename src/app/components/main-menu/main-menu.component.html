@@ -12,11 +12,13 @@
           <li><a routerLink="/projects" class="nav-link px-2 text-white">Projects</a></li>
           <li><a class="nav-link px-2 text-white" style="cursor: pointer;" (click)="openContactDialog()">Contact</a></li>
           <li><a routerLink="/projects/my-courses" class="nav-link px-2 text-white">Learning</a></li>
+          <li><a routerLink="/dashboard" class="nav-link px-2 text-white">Dashboard</a></li>
         </ul>
 
         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search"> </form>
 
         <div class="text-end">
+          
           <button type="button" class="btn btn-outline-light me-2" (click)="openLoginDialog()" [hidden]="isLogged">Login</button>
           <button type="button" class="btn btn-outline-light me-2" (click)="logOut()" [hidden]="!isLogged">Logout</button>
         </div>

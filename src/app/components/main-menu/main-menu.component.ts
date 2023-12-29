@@ -7,6 +7,7 @@ import { LocalAuthenticationService } from 'src/app/services/auth/local-authenti
 import { SpringbootService } from 'src/app/services/springboot.service';
 import { RouterUtilsService } from 'src/app/utils/router-utils.service';
 import { ContactComponent } from '../dialogs/contact/contact.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-main-menu',
@@ -24,6 +25,7 @@ export class MainMenuComponent implements OnInit {
     private spring: SpringbootService, 
     private router: RouterUtilsService, 
     private authService: LocalAuthenticationService,
+    private toast: ToastrService
     ){}
     
   ngOnInit(): void {
@@ -50,6 +52,7 @@ export class MainMenuComponent implements OnInit {
       this.spring.logOut().subscribe({
         next: resp => {
           console.log(resp);
+          this.toast.warning('Session was closed.');
           this.authService.setLogged( 'false' );
           this.isLogged = false;
           this.router.reloadCurrentRoute();

@@ -7,6 +7,8 @@ import { PokeapiComponent } from './pages/pokeapi/pokeapi.component';
 import { SpringbootSimpleCrudComponent } from './pages/springboot-simple-crud/springboot-simple-crud.component';
 import { MonthlyPaymentsComponent } from './pages/monthly-payments/monthly-payments.component';
 import { LearningComponent } from './pages/learning/learning.component';
+import { authenticationGuard } from './security/guards/auth.guard';
+import { lazyAuthGuard } from './security/guards/lazy-auth.guard';
 
 
 
@@ -35,8 +37,14 @@ const routes: Routes = [
   },
 
   { path: 'projects', loadChildren: () => import('./mod/projects/projects-routing.module').then(m => m.ProjectsRoutingModule) },
+  { 
+    path: 'dashboard',
+    canMatch: [lazyAuthGuard],
+    loadChildren: () => import('./dashboard/dashboard-routing.module').then(m => m.DashboardRoutingModule) 
+  },
 
-  // Aqui van los proyectos
+  /* PROTECTED ROUTES */
+
   {
     path: '**', redirectTo: ''
   },

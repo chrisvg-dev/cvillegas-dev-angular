@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">
+    <div class="container">        
+        <h1>{{data.title}}</h1>
+        <span class="example-spacer"></span>
+    </div>
+</mat-toolbar>
+<div mat-dialog-content class="text-center">
+    <mat-icon class="x2 mb-3">delete_sweep</mat-icon>
+    <p>{{ data.message }}</p>
+</div>
+<div mat-dialog-actions class="text-center">
+    <button mat-button (click)="closeDialog()">No</button>
+    <button mat-button (click)="confirm()" cdkFocusInitial>Yes</button>
+</div>

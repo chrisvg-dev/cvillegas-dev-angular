@@ -14,15 +14,20 @@ const URL = environment.SERVER;
 export class SpringbootService {
   constructor(private http: HttpClient, private storage: LocalStorageService) { }
 
+  // Settings
+  findAllSettings(): Observable<any> {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
+    return this.http.get<any[]>(`${URL}/info/settings`);
+  }
   // Security
   login(request: any): Observable<any> {
     const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-    return this.http.post<any[]>(`${URL}/api/v1/auth/login`, request, { headers, withCredentials: true });
+    return this.http.post<any[]>(`${URL}/auth/login`, request, { headers, withCredentials: true });
   }
   logOut(): Observable<any> {
     this.storage.set('isLogged', 'false');
     const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-    return this.http.get(`${URL}/api/v1/auth/logOut`, { headers, withCredentials: true });
+    return this.http.get(`${URL}/auth/logOut`, { headers, withCredentials: true });
   }
 
   // Data Projects

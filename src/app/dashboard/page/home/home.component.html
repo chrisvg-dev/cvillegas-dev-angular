@@ -1,0 +1,10 @@
+<div class="container">
+    <h1 class="title">Choose any option</h1>
+    <div class="card flex justify-content-center gap-2">
+        <p-toast></p-toast>
+        <p-confirmDialog [style]="{width: '35em'}"></p-confirmDialog>
+        <p-button (click)="confirm1()" icon="pi pi-check" label="Confirm" ></p-button>
+        <p-button (click)="confirm2()" icon="pi pi-times" label="Delete" ></p-button>
+        <button pButton (click)="confirm2()" icon="pi pi-times" label="Delete" ></button>
+    </div>
+</div>

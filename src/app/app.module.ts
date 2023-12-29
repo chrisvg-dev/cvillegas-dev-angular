@@ -52,6 +52,12 @@ import { ContactComponent } from './components/dialogs/contact/contact.component
 import { DropzoneDirective } from './dropzone.directive';
 
 import { MatSelectModule } from '@angular/material/select';
+import { DashboardModule } from './dashboard/dashboard.module';
+import { DeletionConfirmDialogComponent } from './components/dialogs/deletion-confirm-dialog/deletion-confirm-dialog.component';
+import { authenticationGuard } from './security/guards/auth.guard';
+
+import { ButtonModule } from 'primeng/button';
+
 
 @NgModule({
   declarations: [
@@ -73,18 +79,20 @@ import { MatSelectModule } from '@angular/material/select';
     SliderComponent,
     TechnologiesComponent,
     ContactComponent,
+    DeletionConfirmDialogComponent,
     DropzoneDirective  ],
   imports: [
     BrowserModule,
     AppRoutingModule, 
     HttpClientModule, BrowserAnimationsModule,
-    MatTableModule, MatInputModule, MatButtonModule,
+    MatTableModule, MatInputModule,
     MatDialogModule, MatPaginatorModule, MatIconModule, MatToolbarModule, ToastrModule.forRoot(),
-    MatTreeModule, MatProgressSpinnerModule, ProjectsModule, FormsModule, ReactiveFormsModule, MatSelectModule
+    MatTreeModule, MatProgressSpinnerModule, ProjectsModule, FormsModule, ReactiveFormsModule, MatSelectModule, DashboardModule,
+    ButtonModule
   ],
   providers: [
     LoaderService,
-    LocalStorageService,
+        LocalStorageService,
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: UniversalAppInterceptor , multi: true },
   ],

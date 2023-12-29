@@ -12,4 +12,8 @@ export class AuthService {
   getJWTToken() {
     return this.localStorareService.get('token');
   }
+
+  hasAccess(): boolean {
+    return true;
+  }
 }

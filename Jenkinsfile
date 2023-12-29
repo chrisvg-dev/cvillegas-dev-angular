@@ -4,8 +4,11 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'npm install'
-                sh 'npm run build'
+                nodejs(nodeJSInstallationName: 'node-lts') {
+                    sh 'npm install'
+                    sh 'npm run build'
+
+                }
             }
         }
         stage('Deploy') {
